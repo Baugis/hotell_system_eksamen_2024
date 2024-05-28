@@ -22,7 +22,7 @@ public class Hotell {
         // Det skal være mulig å lage bruker
         // Påvirker kunde
         // Bruker konstruktør for å enkelt legge til ny bruker
-        // Bruker newBruker = new Bruker(1, "Ola Nordmann", "ola@nordmann.no", "12345678");
+            // Bruker newBruker = new Bruker(1, "Ola Nordmann", "ola@nordmann.no", "12345678");
 
         // Søkealgoritme
         // Bruker skal søke på rom etter tilgjengelige rom, pris og romtype
@@ -55,6 +55,7 @@ public class Hotell {
         // Det skal være mulig å legge til et nytt rom
         // Romid, romnummer, romtype, pris
         // Påvirker romtabell / liste
+        // Bruker konstruktør for å enkelt legge til nytt rom
 
         // Slette rom
         // Det skal være mulig å slette et rom
