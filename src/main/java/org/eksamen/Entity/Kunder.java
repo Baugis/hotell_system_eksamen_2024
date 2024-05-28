@@ -1,7 +1,7 @@
 package org.eksamen.Entity;
 import org.eksamen.Hotell;
 
-/*public class Kunder {
+public class Kunder {
 
     // Konstruktør
     public Kunder (int kundeid, String navn, String epost, String telefon) {
@@ -49,4 +49,4 @@ import org.eksamen.Hotell;
     public int genererNyKundeId() {
         return kundeliste.size() + 1;
     }
-}*/
+}

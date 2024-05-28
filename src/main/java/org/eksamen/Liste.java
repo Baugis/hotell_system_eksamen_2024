@@ -9,7 +9,6 @@ public class Liste {
     private ArrayList<Rom> romListe = new ArrayList<>();
     private ArrayList<Utsjekkinger> utsjekkingListe = new ArrayList<>();
     private ArrayList<Reservasjoner> reservasjonerListe = new ArrayList<>();
-    //private ArrayList<Kunder> kunderListe = new ArrayList<>();
     private ArrayList<Innsjekkinger> innsjekkinngerListe = new ArrayList<>();
     private ArrayList<Avbestillinger> avbestillingerListe = new ArrayList<>();
     private ArrayList<Kunder> kundeListe = new ArrayList<>();
@@ -58,7 +57,7 @@ public class Liste {
         if (tabellNavn.equalsIgnoreCase("tblrom")) {
             for (int i = 0; i < tempListe.size(); i += 4) {
                 int romid = Integer.parseInt(tempListe.get(i));
-                String romnummer = tempListe.get(i + 1);
+                int romnummer = Integer.parseInt(tempListe.get(i + 1));
                 String romtype = tempListe.get(i + 2);
                 float pris = Float.parseFloat(tempListe.get(i + 3));
                 Rom rom = new Rom(romid, romnummer, romtype, pris);
