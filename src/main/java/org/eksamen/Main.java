@@ -86,8 +86,15 @@ public class Main {
                 switch (subValg) {
                     case 1:
                         // Håndter legge til rom
-                        System.out.println("Legge til rom valgt.");
-                        System.out.println("----------------------------------------");
+                        System.out.println("Legg til rom");
+                        System.out.println("Du har valgt å legge til et rom.");
+
+
+
+
+
+
+
                         break;
                     case 2:
                         // Håndter slette rom
