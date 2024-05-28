@@ -48,6 +48,16 @@ public class Rom {
     public void setPris(float pris){
         this.pris = pris;
     }
+
+    @Override
+    public String toString() {
+        return "Rom{" +
+                "romid=" + romid +
+                ", romnummer='" + romnummer + '\'' +
+                ", romtype='" + romtype + '\'' +
+                ", pris=" + pris +
+                '}';
+    }
 }
 
 
