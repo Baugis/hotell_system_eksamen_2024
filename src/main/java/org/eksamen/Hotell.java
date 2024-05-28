@@ -1,5 +1,7 @@
 package org.eksamen;
 
+import org.eksamen.Entity.Rom;
+
 import java.util.Scanner;
 
 public class Hotell {
@@ -77,8 +79,10 @@ public class Hotell {
 
 
 
-    public void leggTilRom(int romnummer, String romtype, float pris){
+    public void leggTilRom(int romId, int romNummer, String romType, float pris){
+        Rom rom = new Rom(romId, romNummer, romType, pris);
 
+        liste.getRomListe().add(rom);
     }
 
     // Slette rom
