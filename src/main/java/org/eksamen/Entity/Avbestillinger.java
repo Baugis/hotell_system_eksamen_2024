@@ -18,4 +18,11 @@ public class Avbestillinger {
     public String getAvbestillingdato() {
         return avbestillingdato;
     }
+
+    public void setAvbestillingsid(String avbestillingsid) { this.avbestillingsid = avbestillingsid;}
+
+    public void setReservasjonsid(String reservasjonsid) {this.reservasjonsid = reservasjonsid;}
+
+    public void setAvbestillingdato(String avbestillingdato) {this.avbestillingdato = avbestillingdato;}
 }
+
