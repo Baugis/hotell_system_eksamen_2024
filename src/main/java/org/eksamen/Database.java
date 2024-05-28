@@ -19,8 +19,8 @@ public class Database {
             return;
         }
 
-        String tableName = "tblkunde";
-        getData(tableName);
+        // String tableName = "tblkunde";
+        // getData(tableName);
     }
 
     // Hent data fra tabeller i database
