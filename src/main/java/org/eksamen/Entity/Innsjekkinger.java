@@ -4,6 +4,13 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 public class Innsjekkinger {
+
+    public Innsjekkinger (int innsjekkingsid, int reservasjonsid, LocalDateTime innsjekkingdato) {
+        this.innsjekkingsid = innsjekkingsid;
+        this.reservasjonsid = reservasjonsid;
+        this.innsjekkingdato = innsjekkingdato;
+    }
+
     private int innsjekkingsid;
 
     private int reservasjonsid;

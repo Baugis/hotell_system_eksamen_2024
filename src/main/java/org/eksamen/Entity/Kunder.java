@@ -1,6 +1,14 @@
 package org.eksamen.Entity;
 
 public class Kunder {
+
+    public Kunder (int kundeid, String navn, String epost, String telefon) {
+        this.kundeid = kundeid;
+        this.navn = navn;
+        this.epost = epost;
+        this.telefon = telefon;
+    }
+
     private int kundeid;
     private String navn;
     private String epost;
