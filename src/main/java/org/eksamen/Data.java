@@ -19,7 +19,6 @@ public class Data {
             return;
         }
 
-
         String tableName = "tblkunde";
         getData(tableName);
     }
