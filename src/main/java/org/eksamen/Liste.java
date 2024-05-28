@@ -9,10 +9,14 @@ public class Liste {
     private ArrayList<Rom> romListe = new ArrayList<>();
     private ArrayList<Utsjekkinger> utsjekkingerListe = new ArrayList<>();
     private ArrayList<Reservasjoner> reservasjonerListe = new ArrayList<>();
-    private ArrayList<Kunder> kunderListe = new ArrayList<>();
+    //private ArrayList<Kunder> kunderListe = new ArrayList<>();
     private ArrayList<Innsjekkinger> innsjekkinngerListe = new ArrayList<>();
     private ArrayList<Avbestillinger> avbestillingerListe = new ArrayList<>();
 
+
+    public ArrayList<Rom> getRomListe() {
+        return romListe;
+    }
     // Opprette Data objekt for å
 
     // Legg til

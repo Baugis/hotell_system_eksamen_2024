@@ -4,13 +4,13 @@ public class Rom {
 
     private int romid;
 
-    private String romnummer;
+    private int romnummer;
 
     private String romtype;
 
     private float pris;
 
-    public Rom(int romid, String romnummer, String romtype, float pris){
+    public Rom(int romid, int romnummer, String romtype, float pris){
         this.romid = romid;
         this.romnummer = romnummer;
         this.romtype = romtype;
@@ -21,7 +21,7 @@ public class Rom {
         return romid;
     }
 
-    private String getRomnummer(){
+    private int getRomnummer(){
         return romnummer;
     }
 
@@ -37,7 +37,7 @@ public class Rom {
         this.romid = romid;
     }
 
-    public void setRomnummer(String romnummer){
+    public void setRomnummer(int romnummer){
         this.romnummer = romnummer;
     }
 

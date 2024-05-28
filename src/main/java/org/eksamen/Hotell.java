@@ -2,11 +2,13 @@ package org.eksamen;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import org.eksamen.Entity.Kunder;
+//import org.eksamen.Entity.Kunder;
+import org.eksamen.Entity.Rom;
+import org.eksamen.Liste;
 
 public class Hotell {
     private Liste liste;
-    private Kunder kunder;
+    /*private Kunder kunder;
 
     // Opprette Liste objekt, hente data fra database
     public Hotell() {
@@ -48,7 +50,7 @@ public class Hotell {
         int nyKundeId = Kunder.generererNyKundeId();
 
         Kunder.leggtilKunde(nyKundeId, navn, epost, telefon);
-    }
+    }*/
 
 
 
@@ -87,8 +89,11 @@ public class Hotell {
 
 
 
-        public void leggTilRom(int romnummer, String romtype, float pris){
 
+        public void leggTilRom(int romId, int romNummer, String romType, float pris){
+            Rom rom = new Rom(romId, romNummer, romType, pris);
+
+            liste.getRomListe().add(rom);
         }
 
         // Slette rom

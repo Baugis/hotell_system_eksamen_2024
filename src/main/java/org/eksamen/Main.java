@@ -1,10 +1,13 @@
 package org.eksamen;
 import java.util.Scanner;
+import org.eksamen.Hotell;
 
 public class Main {
+
+    Hotell hotell = new Hotell();
     public static void main(String[] args) {
-        Hotell hotell = new Hotell();
         Scanner skanner = new Scanner(System.in);
+
         int valg;
 
         while (true) {
@@ -70,6 +73,7 @@ public class Main {
     }
 
     public static void administrasjon(Scanner skanner) {
+        Hotell hotell = new Hotell();
         boolean fortsettISubmeny = true;
         while (fortsettISubmeny) {
             System.out.println("Administrasjon");
@@ -85,13 +89,25 @@ public class Main {
                 int subValg = Integer.parseInt(skanner.nextLine());
                 switch (subValg) {
                     case 1:
-                        // Håndter legge til rom
+                        // Hånter legge til rom
                         System.out.println("Legg til rom");
                         System.out.println("Du har valgt å legge til et rom.");
 
+                        Scanner scanner = new Scanner(System.in);
 
+                        System.out.println("Oppgi romid: ");
+                        int romId = Integer.parseInt(scanner.nextLine());
 
+                        System.out.println("Oppgi romnummer: ");
+                        int romNummer = Integer.parseInt(scanner.nextLine());
 
+                        System.out.println("Oppgi romtype: ");
+                        String romType = scanner.nextLine();
+
+                        System.out.println("Oppgi pris: ");
+                        String pris = scanner.nextLine();
+
+                        hotell.leggTilRom(romId, romNummer, romType, Float.parseFloat(pris));
 
                         break;
                     case 2:
