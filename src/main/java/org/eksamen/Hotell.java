@@ -1,12 +1,16 @@
 package org.eksamen;
 
-public class Hotell {
+import java.util.ArrayList;
+import java.util.Scanner;
 
+public class Hotell {
     private Liste liste;
+    private Kunder kunder;
 
     // Opprette Liste objekt, hente data fra database
     public Hotell() {
         liste = new Liste();
+        kunder = new Kunder();
         Database database = new Database();
         Database.getData("tblkunde");
         Database.getData("tblrom");
@@ -14,6 +18,7 @@ public class Hotell {
         Database.getData("tblinnsjekking");
         Database.getData("tblutsjekking");
         Database.getData("tblreservasjon");
+
     }
 
     // FUNKSJONALITETER UNDER
@@ -23,6 +28,27 @@ public class Hotell {
         // Påvirker kunde
         // Bruker konstruktør for å enkelt legge til ny bruker
             // Bruker newBruker = new Bruker(1, "Ola Nordmann", "ola@nordmann.no", "12345678");
+
+    public void leggTilNyKunde() {
+        Scanner skanner = new Scanner(System.in);
+
+        System.out.println("Oppgi navn:");
+        String navn = skanner.nextLine();
+
+        System.out.println("Oppgi epost:");
+        String epost = skanner.nextLine();
+
+        System.out.println("Oppgi telefonnummer:");
+        String telefon = skanner.nextLine();
+
+        // Genererer kundeID
+        // Husk å legg til genrerererNyKundeId i kunder klassen så den returnerer
+        // en unik kundeId basert på tidlgiere kunder. telle + 1
+        int nyKundeId = kunder.generererNyKundeId();
+
+        kunder.leggtilKunde(nyKundeId, navn, epost, telefon);
+
+
 
         // Søkealgoritme
         // Bruker skal søke på rom etter tilgjengelige rom, pris og romtype

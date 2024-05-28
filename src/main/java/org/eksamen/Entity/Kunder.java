@@ -40,4 +40,12 @@ public class Kunder {
     public void setEpost(String epost) {this.epost = epost;}
 
     public void setTelefon(String telefon) {this.telefon = telefon;}
+
+    public void leggTilKunde(Kunde kunde) {
+        kundeliste.add(kunde);
+    }
+
+    public int genererNyKundeId() {
+        return kundeliste.size() + 1;
+    }
 }
