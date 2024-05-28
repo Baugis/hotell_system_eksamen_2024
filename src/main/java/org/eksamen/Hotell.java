@@ -83,6 +83,12 @@ public class Hotell {
         // Påvirker romtabell / liste
         // Bruker konstruktør for å enkelt legge til nytt rom
 
+
+
+        public void leggTilRom(int romnummer, String romtype, float pris){
+
+        }
+
         // Slette rom
         // Det skal være mulig å slette et rom
 }
