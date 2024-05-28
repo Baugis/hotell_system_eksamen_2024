@@ -18,7 +18,6 @@ public class Hotell {
 
     // FUNKSJONALITETER UNDER
     // KUNDE
-
         // Opprette bruker?
         // Det skal være mulig å lage bruker
         // Påvirker kunde
