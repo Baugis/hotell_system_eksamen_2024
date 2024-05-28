@@ -1,28 +1,30 @@
 package org.eksamen.Entity;
 
+import java.time.LocalDateTime;
+
 public class Avbestillinger {
-    private String avbestillingsid;
+    private int avbestillingsid;
 
-    private String reservasjonsid;
+    private int reservasjonsid;
 
-    private String avbestillingdato;
+    private LocalDateTime avbestillingdato;
 
-    public String getAvbestillingsid() {
+    public int getAvbestillingsid() {
         return avbestillingsid;
     }
 
-    public String getReservasjonsid() {
+    public int getReservasjonsid() {
         return reservasjonsid;
     }
 
-    public String getAvbestillingdato() {
+    public LocalDateTime getAvbestillingdato() {
         return avbestillingdato;
     }
 
-    public void setAvbestillingsid(String avbestillingsid) { this.avbestillingsid = avbestillingsid;}
+    public void setAvbestillingsid(int avbestillingsid) { this.avbestillingsid = avbestillingsid;}
 
-    public void setReservasjonsid(String reservasjonsid) {this.reservasjonsid = reservasjonsid;}
+    public void setReservasjonsid(int reservasjonsid) {this.reservasjonsid = reservasjonsid;}
 
-    public void setAvbestillingdato(String avbestillingdato) {this.avbestillingdato = avbestillingdato;}
+    public void setAvbestillingdato(LocalDateTime avbestillingdato) {this.avbestillingdato = avbestillingdato;}
 }
 
