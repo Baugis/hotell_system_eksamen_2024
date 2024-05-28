@@ -57,8 +57,4 @@ public class Hotell {
 
         // Slette rom
         // Det skal være mulig å slette et rom
-
-
-
-
 }
