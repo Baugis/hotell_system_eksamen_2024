@@ -2,6 +2,7 @@ package org.eksamen.Entity;
 
 public class Kunder {
 
+    // Konstruktør
     public Kunder (int kundeid, String navn, String epost, String telefon) {
         this.kundeid = kundeid;
         this.navn = navn;
@@ -14,6 +15,7 @@ public class Kunder {
     private String epost;
     private String telefon;
 
+    // Lager gettere
     public int getKundeid() {
         return kundeid;
     }
@@ -30,6 +32,7 @@ public class Kunder {
         return telefon;
     }
 
+    // Lager settere
     public void setKundeid(int kundeid) {this.kundeid = kundeid;}
 
     public void setNavn(String navn) {this.navn = navn;}
