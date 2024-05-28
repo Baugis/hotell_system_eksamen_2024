@@ -25,4 +25,20 @@ public class Rom {
     private float getPris(){
         return pris;
     }
+
+    public void setRomid(int romid){
+        this.romid = romid;
+    }
+
+    public void setRomnummer(String romnummer){
+        this.romnummer = romnummer;
+    }
+
+    public void setRomtype(String romtype){
+        this.romtype = romtype;
+    }
+
+    public void setPris(float pris){
+        this.pris = pris;
+    }
 }
