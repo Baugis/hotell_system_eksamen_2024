@@ -10,6 +10,13 @@ public class Rom {
 
     private float pris;
 
+    public Rom(int romid, String romnummer, String romtype, float pris){
+        this.romid = romid;
+        this.romnummer = romnummer;
+        this.romtype = romtype;
+        this.pris = pris;
+    }
+
     private int getRomid(){
         return romid;
     }
