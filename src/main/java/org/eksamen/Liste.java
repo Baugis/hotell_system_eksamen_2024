@@ -13,6 +13,8 @@ public class Liste {
     private ArrayList<Innsjekkinger> innsjekkinngerListe = new ArrayList<>();
     private ArrayList<Avbestillinger> avbestillingerListe = new ArrayList<>();
 
+    // Opprette Data objekt for å
+
     // Legg til
 
 
