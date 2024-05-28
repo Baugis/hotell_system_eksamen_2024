@@ -2,6 +2,7 @@ package org.eksamen;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import org.eksamen.Entity.Kunder;
 
 public class Hotell {
     private Liste liste;
@@ -44,9 +45,10 @@ public class Hotell {
         // Genererer kundeID
         // Husk å legg til genrerererNyKundeId i kunder klassen så den returnerer
         // en unik kundeId basert på tidlgiere kunder. telle + 1
-        int nyKundeId = kunder.generererNyKundeId();
+        int nyKundeId = Kunder.generererNyKundeId();
 
-        kunder.leggtilKunde(nyKundeId, navn, epost, telefon);
+        Kunder.leggtilKunde(nyKundeId, navn, epost, telefon);
+    }
 
 
 

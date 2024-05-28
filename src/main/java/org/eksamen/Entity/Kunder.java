@@ -1,4 +1,5 @@
 package org.eksamen.Entity;
+import org.eksamen.Hotell;
 
 public class Kunder {
 
@@ -41,7 +42,7 @@ public class Kunder {
 
     public void setTelefon(String telefon) {this.telefon = telefon;}
 
-    public void leggTilKunde(Kunde kunde) {
+    public void leggTilKunde(Kunder kunde) {
         kundeliste.add(kunde);
     }
 
