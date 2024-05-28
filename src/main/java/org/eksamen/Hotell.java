@@ -17,4 +17,10 @@ public class Hotell {
     }
 
     // FUNKSJONALITETER UNDER
+
+        // Søkealgoritme
+        // Søke på rom etter tilgjengelige rom, pris og romtype
+        // Rommet kan ikke være reservert i tidsperioden bruker søker etter rommet
+
+
 }
