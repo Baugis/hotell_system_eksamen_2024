@@ -21,6 +21,8 @@ public class Hotell {
         // Opprette bruker?
         // Det skal være mulig å lage bruker
         // Påvirker kunde
+        // Bruker konstruktør for å enkelt legge til ny bruker
+        // Bruker newBruker = new Bruker(1, "Ola Nordmann", "ola@nordmann.no", "12345678");
 
         // Søkealgoritme
         // Bruker skal søke på rom etter tilgjengelige rom, pris og romtype
