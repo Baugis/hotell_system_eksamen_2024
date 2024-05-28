@@ -2,5 +2,5 @@ package org.eksamen.Entity;
 
 public class Rom {
 
-    private String
+    private String rom;
 }
