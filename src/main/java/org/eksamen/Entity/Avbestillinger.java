@@ -3,6 +3,7 @@ import java.time.LocalDateTime;
 
 public class Avbestillinger {
 
+    // Konstruktør
     public Avbestillinger(int avbestillingsid, int reservasjonsid, LocalDateTime avbestillingdato) {
         this.avbestillingsid = avbestillingsid;
         this.reservasjonsid = reservasjonsid;
@@ -15,6 +16,7 @@ public class Avbestillinger {
 
     private LocalDateTime avbestillingdato;
 
+    // Lager gettere
     public int getAvbestillingsid() {
         return avbestillingsid;
     }
@@ -27,6 +29,7 @@ public class Avbestillinger {
         return avbestillingdato;
     }
 
+    // Lager settere
     public void setAvbestillingsid(int avbestillingsid) {
         this.avbestillingsid = avbestillingsid;
     }

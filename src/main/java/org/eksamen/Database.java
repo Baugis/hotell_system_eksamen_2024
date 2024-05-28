@@ -7,11 +7,11 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Data {
+public class Database {
 
     public static void main(String[] args) {
 
-        // Load JDBC driver
+        // Laste inn JDBC Driver
         try {
             Class.forName("org.postgresql.Driver"); // This is for PostgreSQL.
         } catch (ClassNotFoundException e) {
@@ -23,28 +23,32 @@ public class Data {
         getData(tableName);
     }
 
+    // Hent data fra tabeller i database
     public static void getData(String tableName) {
-        // JDBC URL, username and password of PostgreSQL server
-        String url = "jdbc:postgresql://localhost:5432/hotell"; // Replace with your database URL
-        String user = "postgres"; // Replace with your database username
-        String password = "postgres"; // Replace with your database password
+        // Koble til database
+        String url = "jdbc:postgresql://localhost:5432/hotell";
+        String user = "postgres";
+        String password = "postgres";
 
-        // Establish a connection to the database
+        // Koble til
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
 
-            // Create a statement object to execute queries
+            // Lage statement
             try (Statement statement = connection.createStatement()) {
 
-                String query = "SELECT * FROM " + tableName; // Sample query
+                // SQL query
+                String query = "SELECT * FROM " + tableName;
                 ResultSet resultSet = statement.executeQuery(query);
 
-                // Get the ResultSetMetaData
+                // Hente metadata, telle kolonner
                 ResultSetMetaData rsmd = resultSet.getMetaData();
                 int columnCount = rsmd.getColumnCount();
 
-                // Iterate through the result set and print each record
+                // Gå gjennom hver rad og kolonne
                 while (resultSet.next()) {
                     for (int i = 1; i <= columnCount; i++) {
+
+                        // Lage objekt og legge til i liste
                         String columnName = rsmd.getColumnName(i);
                         String columnValue = resultSet.getString(i);
                         System.out.print(columnName + ": " + columnValue + "\t");
@@ -52,15 +56,15 @@ public class Data {
                     System.out.println();
                 }
 
-                // Close the result set
+                // Avslutte
                 resultSet.close();
-
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
+    // Send data til tabeller i database
 }
