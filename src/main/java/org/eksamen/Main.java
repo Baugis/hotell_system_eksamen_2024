@@ -67,7 +67,7 @@ public class Main {
 
                         // Reservasjoner
                         ArrayList<Reservasjoner> reservasjonListe = hotell.getListe().getReservasjonerListe();
-                        String reservasjonQuery = "INSERT INTO tblreservasjon (reservasjonid, kundeid, startdato, sluttdato, status) VALUES (?, ?, ?, ?, ?)";
+                        String reservasjonQuery = "INSERT INTO tblreservasjon (reservasjonid, kundeid, romid, startdato, sluttdato, status) VALUES (?, ?, ?, ?, ?)";
                         hotell.getListe().getDatabase().sendData(reservasjonQuery, reservasjonListe);
 
                         // Utsjekkinger
@@ -241,6 +241,11 @@ public class Main {
                         System.out.println("Legge til kundebruker er valgt");
                         System.out.println("----------------------------------------");
                         hotell.leggTilNyKunde();
+                        break;
+                    case 4:
+                        System.out.println("Avbestille reservasjon er valgt");
+                        System.out.println("----------------------------------------");
+                        hotell.avbestilleRom();
                         break;
                     case 9:
                         // Gå tilbake til hovedmenyen

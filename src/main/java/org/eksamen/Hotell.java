@@ -1,10 +1,8 @@
 package org.eksamen;
 
-import org.eksamen.Entity.Innsjekkinger;
-import org.eksamen.Entity.Rom;
-import org.eksamen.Entity.Kunder;
-import org.eksamen.Entity.Utsjekkinger;
+import org.eksamen.Entity.*;
 import org.eksamen.Liste;
+import org.w3c.dom.ls.LSOutput;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -94,13 +92,31 @@ public class Hotell {
         System.out.println("Reservasjon");
     }
 
+
+
     // Avbestille rom
     // Bruker skal kunne avbestille egen reservasjon
     // Bruker må skrive inn kundeid for å få opp reservasjonen og bekrefte avbestilling
     // Reservasjonstabellen / reservasjonslisten
 
     public void avbestilleRom() {
-        System.out.println("Avbestille rom");
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Oppgi kundeid");
+        Integer kundeId = scanner.nextInt();
+
+        System.out.println("Oppgi reservasjonid:");
+        Integer reservasjonId = scanner.nextInt();
+
+        ArrayList<Reservasjoner> reservasjonListe = liste.getReservasjonerListe();
+
+        // Loop through the reservations list
+        for (Reservasjoner reservasjon : reservasjonListe) {
+            if (kundeId == reservasjon.getKundeid() && reservasjonId == reservasjon.getReservasjonid()) {
+                reservasjon.setStatus("Avbestillt");
+                System.out.println(reservasjon);
+            }
+        }
     }
 
     // RESEPSJON
