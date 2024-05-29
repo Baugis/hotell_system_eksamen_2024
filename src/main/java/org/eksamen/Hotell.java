@@ -84,7 +84,7 @@ public class Hotell {
 
         int nyInnsjekkingsId = liste.getInnsjekkingerListe().size() + 1;
 
-        LocalDateTime innsjekkingdato = LocalDateTime.now();
+        String innsjekkingdato = String.valueOf(LocalDateTime.now());
 
         Innsjekkinger innsjekking = new Innsjekkinger(nyInnsjekkingsId, reservasjonsidInt, innsjekkingdato);
         liste.getInnsjekkingerListe().add(innsjekking);
@@ -103,7 +103,7 @@ public class Hotell {
 
         int nyUtsjekkingsId = liste.getUtsjekkingListe().size() + 1;
 
-        LocalDateTime utsjekkingdato = LocalDateTime.now();
+        String utsjekkingdato = String.valueOf(LocalDateTime.now());
 
         Utsjekkinger utsjekking = new Utsjekkinger(nyUtsjekkingsId, reservasjonsidInt, utsjekkingdato);
         liste.getUtsjekkingListe().add(utsjekking);

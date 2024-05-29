@@ -9,9 +9,9 @@ public class Utsjekkinger {
 
     private int reservasjonid;
 
-    private LocalDateTime utsjekkingdato;
+    private String utsjekkingdato;
 
-    public Utsjekkinger(int utsjekkingid, int reservasjonid, LocalDateTime utsjekkingdato){
+    public Utsjekkinger(int utsjekkingid, int reservasjonid, String utsjekkingdato){
         this.utsjekkingid = utsjekkingid;
         this.reservasjonid = reservasjonid;
         this.utsjekkingdato = utsjekkingdato;
@@ -25,7 +25,7 @@ public class Utsjekkinger {
         return reservasjonid;
     }
 
-    private LocalDateTime getUtsjekkingdato(){
+    private String getUtsjekkingdato(){
         return utsjekkingdato;
     }
 
@@ -37,7 +37,7 @@ public class Utsjekkinger {
         this.reservasjonid = reservasjonid;
     }
 
-    public void setUtsjekkingdato(LocalDateTime utsjekkingdato){
+    public void setUtsjekkingdato(String utsjekkingdato){
         this.utsjekkingdato = utsjekkingdato;
     }
 }

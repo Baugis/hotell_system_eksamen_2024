@@ -73,20 +73,20 @@ public class Liste {
             for (int i = 0; i < tempListe.size(); i += 3) {
                 int utsjekkingid = Integer.parseInt(tempListe.get(i));
                 int reservasjonid = Integer.parseInt(tempListe.get(i + 1));
-                LocalDateTime utsjekkingdato = LocalDateTime.parse(tempListe.get(i + 2));
+                String utsjekkingdato = tempListe.get(i + 2);
                 Utsjekkinger utsjekking = new Utsjekkinger(utsjekkingid, reservasjonid, utsjekkingdato);
                 utsjekkingListe.add(utsjekking);
             }
         }
 
         // Reservasjon objekt som legges i Reverasjon liste
-        if (tabellNavn.equalsIgnoreCase("tblutsjekking")) {
+        if (tabellNavn.equalsIgnoreCase("tblreservasjon")) {
             for (int i = 0; i < tempListe.size(); i += 6) {
                 int reservasjonid = Integer.parseInt(tempListe.get(i));
                 int kundeid = Integer.parseInt(tempListe.get(i + 1));
                 int romid = Integer.parseInt(tempListe.get(i + 2));
-                LocalDateTime startdato = LocalDateTime.parse(tempListe.get(i + 3));
-                LocalDateTime sluttdato = LocalDateTime.parse(tempListe.get(i + 4));
+                String startdato = tempListe.get(i + 3);
+                String sluttdato = tempListe.get(i + 4);
                 String status = tempListe.get(i + 5);
                 Reservasjoner reservasjon = new Reservasjoner(reservasjonid, kundeid, romid, startdato, sluttdato, status);
                 reservasjonerListe.add(reservasjon);
@@ -110,9 +110,9 @@ public class Liste {
             for (int i = 0; i < tempListe.size(); i += 3) {
                 int innsjekkingsid = Integer.parseInt(tempListe.get(i));
                 int reservasjonsid = Integer.parseInt(tempListe.get(i + 1));
-                LocalDateTime innsjekkingdato = LocalDateTime.parse(tempListe.get(i + 2));
+                String innsjekkingdato = tempListe.get(i + 2);
                 Innsjekkinger innsjekking = new Innsjekkinger(innsjekkingsid, reservasjonsid, innsjekkingdato);
-                innsjekkingListe.add(innsjekking);
+                innsjekkingerListe.add(innsjekking);
             }
         }
 
@@ -121,7 +121,7 @@ public class Liste {
             for (int i = 0; i < tempListe.size(); i += 4) {
                 int avbestillingstid = Integer.parseInt(tempListe.get(i));
                 int reservasjonsid = Integer.parseInt(tempListe.get(i + 1));
-                LocalDateTime avbestillingdato = LocalDateTime.parse(tempListe.get(i + 2));
+                String avbestillingdato = tempListe.get(i + 2);
                 Avbestillinger avbestilling = new Avbestillinger(avbestillingstid, reservasjonsid, avbestillingdato);
                 avbestillingerListe.add(avbestilling);
             }

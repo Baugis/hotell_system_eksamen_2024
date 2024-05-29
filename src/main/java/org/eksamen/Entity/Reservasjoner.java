@@ -11,13 +11,13 @@ public class Reservasjoner {
 
     private int romid;
 
-    private LocalDateTime startdato;
+    private String startdato;
 
-    private LocalDateTime sluttdato;
+    private String sluttdato;
 
     private String status;
 
-    public Reservasjoner(int reservasjonid, int kundeid, int romid, LocalDateTime startdato, LocalDateTime sluttdato, String status){
+    public Reservasjoner(int reservasjonid, int kundeid, int romid, String startdato, String sluttdato, String status){
         this.reservasjonid = reservasjonid;
         this.kundeid = kundeid;
         this.romid = romid;
@@ -38,11 +38,11 @@ public class Reservasjoner {
         return romid;
     }
 
-    private LocalDateTime getStartdato(){
+    private String getStartdato(){
         return startdato;
     }
 
-    private LocalDateTime getSluttdato(){
+    private String getSluttdato(){
         return sluttdato;
     }
 
@@ -62,11 +62,11 @@ public class Reservasjoner {
         this.romid = romid;
     }
 
-    public void setStartdato(LocalDateTime startdato){
+    public void setStartdato(String startdato){
         this.startdato = startdato;
     }
 
-    public void setSluttdato(LocalDateTime sluttdato){
+    public void setSluttdato(String sluttdato){
         this.sluttdato = sluttdato;
     }
 
