@@ -112,6 +112,8 @@ public class Main {
         System.out.println("----------------------------------------");
     }
 
+    // Administrasjon er laget av 7041
+    // Testet og godkjent av 7017
     public static void administrasjon(Scanner skanner) {
         boolean fortsettISubmeny = true;
         while (fortsettISubmeny) {
@@ -197,6 +199,8 @@ public class Main {
         }
     }
 
+    // Resepsjon er laget av 7001
+    // Testet og godkjent av 7017
     public static void resepsjon(Scanner skanner) {
         boolean fortsettISubmeny = true;
         while (fortsettISubmeny) {
@@ -241,6 +245,8 @@ public class Main {
         }
     }
 
+    // Kunde er laget av 7001
+    // Testet og godkjent av 7041
     public static void kunde(Scanner skanner) {
         boolean fortsettISubmeny = true;
         while (fortsettISubmeny) {

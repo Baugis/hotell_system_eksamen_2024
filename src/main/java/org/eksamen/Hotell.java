@@ -57,7 +57,7 @@ public class Hotell {
 
     // Oppretter en søkealgoritme hvor bruker kan søke etter rom basert på ulike krav
     // Funksjonen er laget av kandidatnummer 7017
-    // Funksjonen er testet og godkjent av kandidatnummer ...
+    // Funksjonen er testet og godkjent av kandidatnummer 7035
 
     public void sokeRom() {
         Scanner skanner = new Scanner(System.in);
@@ -133,7 +133,7 @@ public class Hotell {
     }
 
     // Funksjon for reservasjon av rom. Funksjonen er laget av kandidatnummer 7017
-    // Funksjonen er testet og godkjent av kandidatnummer ...
+    // Funksjonen er testet og godkjent av kandidatnummer 7001
     public void reservasjon() {
         System.out.println("Reservasjon");
     }
@@ -179,7 +179,7 @@ public class Hotell {
     // MENYVALG RESEPSJON
 
     // Funksjon for innsjekking av kunde. Funksjonen er laget av kandidatnummer 7001
-    // Funksjonen er testet og godkjent av kandidatnummer ..
+    // Funksjonen er testet og godkjent av kandidatnummer 7041
     public void innsjekking() {
         Scanner skanner = new Scanner(System.in);
         System.out.println("Oppgi reservasjonsid:");
@@ -205,7 +205,7 @@ public class Hotell {
     }
 
     // Funksjon for å utsjekking av gjest. Funksjonen er laget av kandidatnummer 7001
-    // Funksjonen er testet og godkjent av kandidatnummer ..
+    // Funksjonen er testet og godkjent av kandidatnummer 7041
     public void utsjekking() {
         Scanner skanner = new Scanner(System.in);
         System.out.println("Oppgi reservasjonsid:");
@@ -231,7 +231,7 @@ public class Hotell {
     // MENYVALG ADMINISTRASJON
 
     // Funksjonen for å legge til rom er kodet av kandidatnummer 7041
-    // Funksjonen er testet og godkjent av kandidatnummer ...
+    // Funksjonen er testet og godkjent av kandidatnummer 7035
     public void leggTilRom(int romNummer, String romType, float pris) {
         int nyRomId = liste.getRomListe().size() + 1;
         Rom rom = new Rom(nyRomId, romNummer, romType, pris);
@@ -248,7 +248,7 @@ public class Hotell {
     }
 
     // Funksjonen for å slette rom er kodet av kandidatnummer 7041
-    // Funksjonen er testet og godkjent av kandidatnummer ...
+    // Funksjonen er testet og godkjent av kandidatnummer 7001
 
     public boolean slettRom(int romid) {
         Rom rom = finnRom(romid);
