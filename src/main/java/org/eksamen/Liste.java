@@ -2,6 +2,8 @@ package org.eksamen;
 
 import org.eksamen.Entity.*;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Liste {
@@ -78,9 +80,26 @@ public class Liste {
 
 
         // Innsjekking objekt som legges i Innsjekking liste
-
+        if (tabellNavn.equalsIgnoreCase("tblinnsjekking")) {
+            for (int i = 0; i < tempListe.size(); i += 4) {
+                int innsjekkingsid = Integer.parseInt(tempListe.get(i));
+                int reservasjonsid = Integer.parseInt(tempListe.get(i + 1));
+                LocalDateTime innsjekkingdato = LocalDateTime.parse(tempListe.get(i + 2));
+                Rom rom = new Rom(innsjekkingsid, reservasjonsid, innsjekkingdato);
+                romListe.add(rom);
+            }
+        }
 
         // Avbestilling objekt som legges i Avbestilling liste
+        if (tabellNavn.equalsIgnoreCase("tblavbestilling")) {
+            for (int i = 0; i < tempListe.size(); i += 4) {
+                int avbestillingstid = Integer.parseInt(tempListe.get(i));
+                int reservasjonsid = Integer.parseInt(tempListe.get(i + 1));
+                LocalDateTime avbestillingdato = LocalDateTime.parse(tempListe.get(i + 2));
+                Avbestillinger avbestilling = new Avbestillinger(avbestillingstid, reservasjonsid, avbestillingdato);
+                romListe.add(avbestilling);
+            }
+        }
     }
 
 
