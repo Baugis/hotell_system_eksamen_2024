@@ -18,6 +18,10 @@ public class Hotell {
         this.liste = new Liste(database);
     }
 
+    public Liste getListe() {
+        return liste;
+    }
+
     // FUNKSJONALITETER UNDER
     // KUNDE
     // Opprette bruker?
