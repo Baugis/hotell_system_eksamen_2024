@@ -6,6 +6,7 @@ import org.eksamen.Entity.Kunder;
 import org.eksamen.Entity.Utsjekkinger;
 import org.eksamen.Liste;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.time.LocalDateTime;
 import java.util.Scanner;
@@ -25,12 +26,9 @@ public class Hotell {
 
     // FUNKSJONALITETER UNDER
     // KUNDE
-    // Opprette bruker?
-    // Det skal være mulig å lage bruker
-    // Påvirker kunde
-    // Bruker konstruktør for å enkelt legge til ny bruker
-    // Bruker newBruker = new Bruker(1, "Ola Nordmann", "ola@nordmann.no", "12345678");
 
+    // Funksjon for å legge til en ny kunde. Funksjonen er laget av kandidatnummer 7001
+    // Testet av kandidatnummer ..
     public void leggTilNyKunde() {
         Scanner skanner = new Scanner(System.in);
 
@@ -66,8 +64,25 @@ public class Hotell {
     // Bruker skal så skrive inn ønsket romtype
     // Det skal deretter printes ut de tilgjengelige rommene
 
+    // Oppretter en søkealgoritme hvor bruker kan søke etter rom basert på ulike krav
+    // Funksjonen er laget av kandidatnummer 7001 og kandidatnummer 7017
     public void sokeRom() {
-        System.out.println("Her");
+        Scanner skanner = new Scanner(System.in);
+
+        System.out.println("Oppgi startdato (yyyy-MM-dd)");
+        String startDato = skanner.nextLine();
+
+        System.out.println("Oppgi sluttdato(yyyy-MM-dd)");
+        String sluttDato = skanner.nextLine();
+
+        System.out.println("Oppgi minimumspris:");
+        double minPris = Double.parseDouble(skanner.nextLine());
+
+        System.out.println("Oppgi maksimumspris:");
+        double maksPris = Double.parseDouble(skanner.nextLine());
+
+        System.out.println("Oppgi ønsket romtype:");
+        String romtype = skanner.nextLine();
     }
 
     // Reservere rom
@@ -94,6 +109,9 @@ public class Hotell {
     // Opprettes innsjekkingsid og innsjekkingsdato
     // Påvirker innsjekkingstabellen/liste
 
+    // Funksjon for innsjekking av kunde. Funksjonen er laget av kandidatnummer 7001
+    // Testet av kandidatnummer ...
+
     public void innsjekking () {
         Scanner skanner = new Scanner(System.in);
         System.out.println("Oppgi reservasjonsid:");
@@ -112,6 +130,9 @@ public class Hotell {
     // Utsjekking av kunde
     // Resepsjonen skal kunne sjekke ut en kunde ved hjelp av reservasjonsid
     // Får en utsjekkingsdato time
+
+    // Funksjon for å utsjekking av gjest. Funksjonen er laget av kandidatnummer 7001
+    // Funksjonen er testet av kandidatnummer ...
 
     public void utsjekking () {
         Scanner skanner = new Scanner(System.in);
@@ -135,6 +156,7 @@ public class Hotell {
     // Romid, romnummer, romtype, pris
     // Påvirker romtabell / liste
     // Bruker konstruktør for å enkelt legge til nytt rom
+
 
 
     public void leggTilRom(int romNummer, String romType, float pris) {
