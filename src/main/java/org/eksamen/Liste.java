@@ -80,7 +80,16 @@ public class Liste {
 
 
         // Kunde objekt som legges i Kunde liste
-
+        if (tabellNavn.equalsIgnoreCase("tblkunde")) {
+            for (int i = 0; i < tempListe.size(); i += 4) {
+                int kundeid = Integer.parseInt(tempListe.get(i));
+                String navn = tempListe.get(i + 1);
+                String epost = tempListe.get(i + 2);
+                String telefon = tempListe.get(i + 3);
+                Kunder kunde = new Kunder(kundeid, navn, epost, telefon);
+                kundeListe.add(kunde);
+            }
+        }
 
         // Innsjekking objekt som legges i Innsjekking liste
         if (tabellNavn.equalsIgnoreCase("tblinnsjekking")) {
@@ -88,8 +97,8 @@ public class Liste {
                 int innsjekkingsid = Integer.parseInt(tempListe.get(i));
                 int reservasjonsid = Integer.parseInt(tempListe.get(i + 1));
                 LocalDateTime innsjekkingdato = LocalDateTime.parse(tempListe.get(i + 2));
-                Rom rom = new Rom(innsjekkingsid, reservasjonsid, innsjekkingdato);
-                romListe.add(rom);
+                Innsjekkinger innsjekking = new Innsjekkinger(innsjekkingsid, reservasjonsid, innsjekkingdato);
+                innsjekkingListe.add(innsjekking);
             }
         }
 
@@ -100,7 +109,7 @@ public class Liste {
                 int reservasjonsid = Integer.parseInt(tempListe.get(i + 1));
                 LocalDateTime avbestillingdato = LocalDateTime.parse(tempListe.get(i + 2));
                 Avbestillinger avbestilling = new Avbestillinger(avbestillingstid, reservasjonsid, avbestillingdato);
-                romListe.add(avbestilling);
+                avbestillingerListe.add(avbestilling);
             }
         }
     }
