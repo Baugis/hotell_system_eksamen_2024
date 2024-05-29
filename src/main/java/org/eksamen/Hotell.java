@@ -41,19 +41,14 @@ public class Hotell {
 
         String telefon = skanner.nextLine();
 
-        // Hvis telefonnummer finnes så ikke legg til:
-        /*if (liste.getKundeListe(telefon)) {
-            System.out.println("hællæ du eksisterer allerede");
-        } else {
-            // Genererer kundeID
-            int nyKundeId = liste.getKundeListe().size() + 1;
+        // Genererer kundeID
+        int nyKundeId = liste.getKundeListe().size() + 1;
 
-            Kunder kunde = new Kunder(nyKundeId, navn, epost, telefon);
+        Kunder kunde = new Kunder(nyKundeId, navn, epost, telefon);
 
-            liste.getKundeListe().add(kunde);
+        liste.getKundeListe().add(kunde);
 
-            liste.printKundeListe();
-        }*/
+        liste.printKundeListe();
 
         System.out.println("Velkommen til oss, " + navn + "!");
     }
@@ -100,7 +95,7 @@ public class Hotell {
 
         ArrayList<Reservasjoner> reservasjonListe = liste.getReservasjonerListe();
 
-        // Loop through the reservations list
+        // Går gjennom alle reservasjonene
         for (Reservasjoner reservasjon : reservasjonListe) {
             boolean found = false;
             if (kundeId == reservasjon.getKundeid() && reservasjonId == reservasjon.getReservasjonid()) {
@@ -132,21 +127,25 @@ public class Hotell {
     public void innsjekking() {
         Scanner skanner = new Scanner(System.in);
         System.out.println("Oppgi reservasjonsid:");
-        String reservasjonsid = skanner.nextLine();
+        int reservasjonsid = skanner.nextInt();
 
         // Må sjekke om reservasjons id finnes i reservasjonslisten først og deretter videre kode.
         // Samme i utsjekking
 
-        int reservasjonsidInt = Integer.parseInt(reservasjonsid);
+        ArrayList<Reservasjoner> reservasjonerArrayList = liste.getReservasjonerListe();
 
-        int nyInnsjekkingsId = liste.getInnsjekkingerListe().size() + 1;
+        for (Reservasjoner reservasjon : reservasjonerArrayList) {
+            if (reservasjon.getReservasjonid() == reservasjonsid) {
+                int nyInnsjekkingsId = liste.getInnsjekkingerListe().size() + 1;
 
-        String innsjekkingdato = String.valueOf(LocalDateTime.now());
+                String innsjekkingdato = String.valueOf(LocalDateTime.now());
 
-        Innsjekkinger innsjekking = new Innsjekkinger(nyInnsjekkingsId, reservasjonsidInt, innsjekkingdato);
-        liste.getInnsjekkingerListe().add(innsjekking);
+                Innsjekkinger innsjekking = new Innsjekkinger(nyInnsjekkingsId, reservasjonsid, innsjekkingdato);
+                liste.getInnsjekkingerListe().add(innsjekking);
 
-        System.out.println("Kunde med reservasjonsid " + reservasjonsid + " er sjekket inn med timestamp " + innsjekkingdato);
+                System.out.println("Kunde med reservasjonsid " + reservasjonsid + " er sjekket inn med timestamp " + innsjekkingdato);
+            }
+        }
     }
 
     // Funksjon for å utsjekking av gjest. Funksjonen er laget av kandidatnummer 7001
@@ -154,18 +153,22 @@ public class Hotell {
     public void utsjekking() {
         Scanner skanner = new Scanner(System.in);
         System.out.println("Oppgi reservasjonsid:");
-        String reservasjonsid = skanner.nextLine();
+        int reservasjonsid = skanner.nextInt();
 
-        int reservasjonsidInt = Integer.parseInt(reservasjonsid);
+        ArrayList<Innsjekkinger> innsjekkingerArrayList = liste.getInnsjekkingerListe();
 
-        int nyUtsjekkingsId = liste.getUtsjekkingListe().size() + 1;
+        for (Innsjekkinger innsjekkinger : innsjekkingerArrayList) {
+            if (innsjekkinger.getReservasjonsid() == reservasjonsid) {
+                int nyUtsjekkingsId = liste.getUtsjekkingListe().size() + 1;
 
-        String utsjekkingdato = String.valueOf(LocalDateTime.now());
+                String utsjekkingdato = String.valueOf(LocalDateTime.now());
 
-        Utsjekkinger utsjekking = new Utsjekkinger(nyUtsjekkingsId, reservasjonsidInt, utsjekkingdato);
-        liste.getUtsjekkingListe().add(utsjekking);
+                Utsjekkinger utsjekking = new Utsjekkinger(nyUtsjekkingsId, reservasjonsid, utsjekkingdato);
+                liste.getUtsjekkingListe().add(utsjekking);
 
-        System.out.println("Kunde med reservasjonsid " + reservasjonsid + " er sjekket ut med timestamp " + utsjekkingdato);
+                System.out.println("Kunde med reservasjonsid " + reservasjonsid + " er sjekket ut med timestamp " + utsjekkingdato);
+            }
+        }
     }
 
 
@@ -218,7 +221,6 @@ public class Hotell {
             if (rom != null && rom.getRomid() == romid) {
                 return rom;
             }
-
         }
         return null;
     }
@@ -227,4 +229,3 @@ public class Hotell {
 
 
 }
-
