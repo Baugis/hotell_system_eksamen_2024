@@ -6,6 +6,8 @@ import java.util.Scanner;
 import org.eksamen.Entity.*;
 import org.eksamen.Hotell;
 
+// Selve menysystemet er laget av kandidatnummer 7001 og 7041
+// Menysystemet er testet og godkjent av kandidatnummer 7017 og 7035
 public class Main {
     static Hotell hotell = new Hotell();
     public static void main(String[] args) {
@@ -45,6 +47,8 @@ public class Main {
                         skanner.close();
 
                         // Sender til database
+                        // Sendingen til database er laget av kandidatnummer 7035
+                        // Sendingen til database er testet og godkjent av kandidatnummer 7017
                         // ROM
                         ArrayList<Rom> romListe = hotell.getListe().getRomListe();
                         String romQuery = "INSERT INTO tblrom (romid, romnummer, romtype, pris) VALUES (?, ?, ?, ?)";

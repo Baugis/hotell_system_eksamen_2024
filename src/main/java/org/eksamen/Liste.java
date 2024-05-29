@@ -6,6 +6,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
+// Liste er opprettet og kodet av kandidatnummer 7017 og 7035
+// Liste er testet og godkjent av kandidatnummer 7001 og 7041
 public class Liste {
     // ArrayList for hver tabell
     private ArrayList<Rom> romListe = new ArrayList<>();
@@ -131,8 +133,6 @@ public class Liste {
 
 
     // Slett
-
-
     // Print liste for testing
     public void printRomListe() {
         for (Rom rom : romListe) {

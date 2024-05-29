@@ -1,9 +1,10 @@
 package org.eksamen.Entity;
 import java.time.LocalDateTime;
 
+// Avbestillinger er opprettet av kandidatnummer 7001
 public class Avbestillinger {
 
-    // Konstruktør
+    // Oppretter konstruktør
     public Avbestillinger(int avbestillingsid, int reservasjonsid, String avbestillingdato) {
         this.avbestillingsid = avbestillingsid;
         this.reservasjonsid = reservasjonsid;
@@ -11,9 +12,7 @@ public class Avbestillinger {
     }
 
     private int avbestillingsid;
-
     private int reservasjonsid;
-
     private String avbestillingdato;
 
     // Lager gettere

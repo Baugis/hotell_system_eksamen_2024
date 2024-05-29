@@ -7,6 +7,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
+// Database er opprettet og kodet av kandidatnummer 7017 og 7035
+// Koblingene er testet og godkjent av kandidatnummer 7001 og 7041
 public class Database {
     private static final String URL = "jdbc:postgresql://localhost:5432/hotell";
     private static final String USER = "postgres";
