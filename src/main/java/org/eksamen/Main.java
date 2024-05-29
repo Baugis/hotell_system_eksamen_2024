@@ -174,7 +174,7 @@ public class Main {
                             System.out.println("Rom slettet: " + rom.getRomid() +", "+ rom.getRomnummer() +", "+ rom.getRomtype() +", " + rom.getPris());
 
                         } else{
-                            System.out.println("Rom med Id: " + romid + " finnes ikke.");
+                            System.out.println("Rom med Id: " + romid + " kunne ikke slettes.");
                         }
 
                         System.out.println("");

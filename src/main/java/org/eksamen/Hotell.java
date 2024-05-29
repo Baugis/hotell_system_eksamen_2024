@@ -198,11 +198,24 @@ public class Hotell {
         Rom rom = finnRom(romid);
 
         if (rom != null){
-            liste.getRomListe().remove(rom);
 
-            database.deleteRoom(romid);
+            boolean roomReserved = false;
 
-            return true;
+            ArrayList<Reservasjoner> r = liste.getReservasjonerListe();
+            for (Reservasjoner reservasjoner : r){
+                if (romid == reservasjoner.getRomid()) {
+                    System.out.println(reservasjoner.getRomid());
+                    roomReserved = true;
+                    break;
+                }
+            }
+
+            if (!roomReserved) {
+                liste.getRomListe().remove(rom);
+
+                database.deleteRoom(romid);
+                return true;
+            }
         } else{
             String ikkeFunnet = "Rommet finnes ikke.";
         }
