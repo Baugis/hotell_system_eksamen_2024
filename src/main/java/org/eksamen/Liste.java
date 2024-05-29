@@ -16,7 +16,7 @@ public class Liste {
     private ArrayList<Avbestillinger> avbestillingListe = new ArrayList<>();
     private Database database;
 
-
+    // Lager getter for romliste.
     public ArrayList<Rom> getRomListe() {
         return romListe;
     }

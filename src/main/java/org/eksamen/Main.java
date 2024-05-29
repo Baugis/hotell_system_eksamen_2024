@@ -107,7 +107,7 @@ public class Main {
                         System.out.println("Oppgi pris: ");
                         String pris = scanner.nextLine();
 
-                        hotell.leggTilRom(romId, romNummer, romType, Float.parseFloat(pris));
+                        hotell.leggTilRom(romNummer, romType, Float.parseFloat(pris));
 
                         break;
                     case 2:

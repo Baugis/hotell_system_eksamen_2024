@@ -2,12 +2,16 @@ package org.eksamen;
 
 import org.eksamen.Entity.Rom;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Hotell {
 
     private Database database;
     private Liste liste;
+
+
+    private
 
     public Hotell() {
         this.database = new Database();
@@ -79,8 +83,9 @@ public class Hotell {
 
 
 
-    public void leggTilRom(int romId, int romNummer, String romType, float pris){
-        Rom rom = new Rom(romId, romNummer, romType, pris);
+    public void leggTilRom(int romNummer, String romType, float pris){
+        int nyRomId = liste.getRomListe().size() + 1;
+        Rom rom = new Rom(nyRomId, romNummer, romType, pris);
 
         liste.getRomListe().add(rom);
     }
