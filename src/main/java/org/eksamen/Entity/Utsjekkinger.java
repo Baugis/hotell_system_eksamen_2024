@@ -17,15 +17,15 @@ public class Utsjekkinger {
         this.utsjekkingdato = utsjekkingdato;
     }
 
-    private int getUtsjekkingid(){
+    public int getUtsjekkingid(){
         return utsjekkingid;
     }
 
-    private int getReservasjonid(){
+    public int getReservasjonid(){
         return reservasjonid;
     }
 
-    private String getUtsjekkingdato(){
+    public String getUtsjekkingdato(){
         return utsjekkingdato;
     }
 

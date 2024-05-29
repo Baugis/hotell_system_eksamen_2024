@@ -26,27 +26,27 @@ public class Reservasjoner {
         this.status = status;
     }
 
-    private int getReservasjonid(){
+    public int getReservasjonid(){
         return reservasjonid;
     }
 
-    private int getKundeid(){
+    public int getKundeid(){
         return kundeid;
     }
 
-    private int getRomid(){
+    public int getRomid(){
         return romid;
     }
 
-    private String getStartdato(){
+    public String getStartdato(){
         return startdato;
     }
 
-    private String getSluttdato(){
+    public String getSluttdato(){
         return sluttdato;
     }
 
-    private String getStatus(){
+    public String getStatus(){
         return status;
     }
 
