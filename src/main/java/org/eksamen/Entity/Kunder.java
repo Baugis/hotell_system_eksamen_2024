@@ -2,9 +2,10 @@ package org.eksamen.Entity;
 import org.eksamen.Hotell;
 import org.eksamen.Liste;
 
+// Kunder er opprettet av kandidatnummer 7001
 public class Kunder {
 
-    // Konstruktør
+    // Oppretter konstruktør
     public Kunder (int kundeid, String navn, String epost, String telefon) {
         this.kundeid = kundeid;
         this.navn = navn;

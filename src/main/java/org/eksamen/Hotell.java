@@ -6,12 +6,12 @@ import org.eksamen.Entity.Kunder;
 import org.eksamen.Entity.Utsjekkinger;
 import org.eksamen.Liste;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class Hotell {
-
     private Database database;
     private Liste liste;
 
@@ -24,14 +24,11 @@ public class Hotell {
         return liste;
     }
 
-    // FUNKSJONALITETER UNDER
-    // KUNDE
-    // Opprette bruker?
-    // Det skal være mulig å lage bruker
-    // Påvirker kunde
-    // Bruker konstruktør for å enkelt legge til ny bruker
-    // Bruker newBruker = new Bruker(1, "Ola Nordmann", "ola@nordmann.no", "12345678");
+    // Her kommer de ulike funksjonene
+    // MENYVALG KUNDE
 
+    // Funksjon for å legge til en ny kunde. Funksjonen er laget av kandidatnummer 7001
+    // Testet og godkjent av kandidatnummer 7035
     public void leggTilNyKunde() {
         Scanner skanner = new Scanner(System.in);
 
@@ -56,27 +53,45 @@ public class Hotell {
         liste.printKundeListe();
     }
 
-    // Søkealgoritme
-    // Bruker skal søke på rom etter tilgjengelige rom, pris og romtype
-    // Rommet kan ikke være reservert i tidsperioden bruker søker etter rommet
-    // Bruker skal kunne oppgi en fra-til pris
-    // Bruker skal kunne oppgi ønsket romtype
+    // Oppretter en søkealgoritme hvor bruker kan søke etter rom basert på ulike krav
+    // Funksjonen er laget av kandidatnummer 7017
+    // Funksjonen er testet og godkjent av kandidatnummer ...
 
-    // Reservere rom
-    // Bruker skal kunne bestille/reservere rom
-    // Bruker må skrive inn kundeid, startdato og sluttdato
-    // Dette påvirker reservasjonstabellen / reservasjonslisten
+    public void sokeRom() {
+        Scanner skanner = new Scanner(System.in);
 
-    // Avbestille rom
-    // Bruker skal kunne avbestille egen reservasjon
-    // Bruker må skrive inn kundeid for å få opp reservasjonen og bekrefte avbestilling
-    // Reservasjonstabellen / reservasjonslisten
+        System.out.println("Oppgi startdato (yyyy-MM-dd)");
+        String startDato = skanner.nextLine();
 
-    // RESEPSJON
-    // Innsjekking av kunde
-    // Resepsjonen skal kunne sjekke inn en kunde ved hjelp av reservasjonsid
-    // Opprettes innsjekkingsid og innsjekkingsdato
-    // Påvirker innsjekkingstabellen/liste
+        System.out.println("Oppgi sluttdato(yyyy-MM-dd)");
+        String sluttDato = skanner.nextLine();
+
+        System.out.println("Oppgi minimumspris:");
+        double minPris = Double.parseDouble(skanner.nextLine());
+
+        System.out.println("Oppgi maksimumspris:");
+        double maksPris = Double.parseDouble(skanner.nextLine());
+
+        System.out.println("Oppgi ønsket romtype:");
+        String romtype = skanner.nextLine();
+    }
+
+    // Funksjon for reservasjon av rom. Funksjonen er laget av kandidatnummer 7017
+    // Funksjonen er testet og godkjent av kandidatnummer ...
+    public void reservasjon() {
+        System.out.println("Reservasjon");
+    }
+
+    // Funksjon for avbestilling av rom. Funksjonen er laget av kandidatnummer 7035
+    // Funksjonen er testet og godkjent av kandidatnummer ...
+    public void avbestilleRom() {
+        System.out.println("Avbestille rom");
+    }
+
+    // MENYVALG RESEPSJON
+
+    // Funksjon for innsjekking av kunde. Funksjonen er laget av kandidatnummer 7001
+    // Funksjonen er testet og godkjent av kandidatnummer ..
 
     public void innsjekking () {
         Scanner skanner = new Scanner(System.in);
@@ -93,10 +108,8 @@ public class Hotell {
         liste.getInnsjekkingerListe().add(innsjekking);
     }
 
-    // Utsjekking av kunde
-    // Resepsjonen skal kunne sjekke ut en kunde ved hjelp av reservasjonsid
-    // Får en utsjekkingsdato time
-
+    // Funksjon for å utsjekking av gjest. Funksjonen er laget av kandidatnummer 7001
+    // Funksjonen er testet og godkjent av kandidatnummer ..
     public void utsjekking () {
         Scanner skanner = new Scanner(System.in);
         System.out.println("Oppgi reservasjonsid:");
@@ -113,14 +126,10 @@ public class Hotell {
     }
 
 
-    // ADMINISTRASJON
-    // Legge til rom
-    // Det skal være mulig å legge til et nytt rom
-    // Romid, romnummer, romtype, pris
-    // Påvirker romtabell / liste
-    // Bruker konstruktør for å enkelt legge til nytt rom
+    // MENYVALG ADMINISTRASJON
 
-
+    // Funksjonen for å legge til rom er kodet av kandidatnummer 7041
+    // Funksjonen er testet og godkjent av kandidatnummer ...
     public void leggTilRom(int romNummer, String romType, float pris) {
         int nyRomId = liste.getRomListe().size() + 1;
         Rom rom = new Rom(nyRomId, romNummer, romType, pris);
@@ -128,8 +137,8 @@ public class Hotell {
         liste.getRomListe().add(rom);
     }
 
-    // Slette rom
-    // Det skal være mulig å slette et rom
+    // Funksjonen for å slette rom er kodet av kandidatnummer 7041
+    // Funksjonen er testet og godkjent av kandidatnummer ...
 
     public void slettRom(int romid, int romnummer, String romtype, float pris) {
 

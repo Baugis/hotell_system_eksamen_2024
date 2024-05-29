@@ -2,21 +2,16 @@ package org.eksamen.Entity;
 
 import java.time.LocalDateTime;
 
+// Reservasjoner er opprettet av kandidatnummer 7041
 public class Reservasjoner {
-
-
     private int reservasjonid;
-
     private int kundeid;
-
     private int romid;
-
     private String startdato;
-
     private String sluttdato;
-
     private String status;
 
+    // Oppretter konstruktør
     public Reservasjoner(int reservasjonid, int kundeid, int romid, String startdato, String sluttdato, String status){
         this.reservasjonid = reservasjonid;
         this.kundeid = kundeid;
@@ -26,30 +21,32 @@ public class Reservasjoner {
         this.status = status;
     }
 
-    private int getReservasjonid(){
+    // Oppretter gettere
+    public int getReservasjonid(){
         return reservasjonid;
     }
 
-    private int getKundeid(){
+    public int getKundeid(){
         return kundeid;
     }
 
-    private int getRomid(){
+    public int getRomid(){
         return romid;
     }
 
-    private String getStartdato(){
+    public String getStartdato(){
         return startdato;
     }
 
-    private String getSluttdato(){
+    public String getSluttdato(){
         return sluttdato;
     }
 
-    private String getStatus(){
+    public String getStatus(){
         return status;
     }
 
+    // Oppretter settere
     public void setReservasjonid(int reservasjonid){
         this.reservasjonid = reservasjonid;
     }
