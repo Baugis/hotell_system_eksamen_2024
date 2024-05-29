@@ -43,12 +43,11 @@ public class Kunder {
 
     public void setTelefon(String telefon) {this.telefon = telefon;}
 
-    public void leggTilKunde(Kunder kunde) {
-        kundeliste.add(kunde);
+    public void leggTilKunde(Kunder kunde) { kundeListe.add(kunde);
     }
 
     public static int genererNyKundeId() {
-        return kundeliste.size() + 1;
+        return kundeListe.size() + 1;
     }
 
     @Override

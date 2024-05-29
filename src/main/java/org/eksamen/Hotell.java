@@ -43,13 +43,11 @@ public class Hotell {
 
         Kunder kunde = new Kunder(nyKundeId, navn, epost, telefon);
 
-        // USIKKER PÅ HVILKEN AV DISSE METODENE JEG SKAL BRUKE FOR Å LEGGE TIL !!
+        // USIKKER PÅ HVILKEN AV DISSE METODENE JEG SKAL BRUKE FOR Å LEGGE TIL ??????????????????????????????????
         liste.getKundeListe().add(kunde);
 
         Kunder.leggtilKunde(nyKundeId, navn, epost, telefon);
     }
-
-
 
     // Søkealgoritme
     // Bruker skal søke på rom etter tilgjengelige rom, pris og romtype
@@ -76,6 +74,7 @@ public class Hotell {
     // Utsjekking av kunde
     // Resepsjonen skal kunne sjekke ut en kunde ved hjelp av reservasjonsid
     // Får en utsjekkingsdato time
+
 
     // ADMINISTRASJON
     // Legge til rom
