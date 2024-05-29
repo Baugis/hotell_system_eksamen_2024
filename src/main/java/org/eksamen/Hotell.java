@@ -82,12 +82,12 @@ public class Hotell {
 
         int reservasjonsidInt = Integer.parseInt(reservasjonsid);
 
-        int nyInnsjekkingsId = liste.getInnsjekkingListe().size() + 1;
+        int nyInnsjekkingsId = liste.getInnsjekkingerListe().size() + 1;
 
         LocalDateTime innsjekkingdato = LocalDateTime.now();
 
         Innsjekkinger innsjekking = new Innsjekkinger(nyInnsjekkingsId, reservasjonsidInt, innsjekkingdato);
-        liste.getInnsjekkingListe().add(innsjekking);
+        liste.getInnsjekkingerListe().add(innsjekking);
     }
 
     // Utsjekking av kunde

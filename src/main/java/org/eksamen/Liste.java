@@ -11,7 +11,7 @@ public class Liste {
     private ArrayList<Rom> romListe = new ArrayList<>();
     private ArrayList<Utsjekkinger> utsjekkingListe = new ArrayList<>();
     private ArrayList<Reservasjoner> reservasjonerListe = new ArrayList<>();
-    private ArrayList<Innsjekkinger> innsjekkinngerListe = new ArrayList<>();
+    private ArrayList<Innsjekkinger> innsjekkingerListe = new ArrayList<>();
     private ArrayList<Avbestillinger> avbestillingerListe = new ArrayList<>();
     private ArrayList<Kunder> kundeListe = new ArrayList<>();
     private ArrayList<Innsjekkinger> innsjekkingListe = new ArrayList<>();
@@ -22,7 +22,7 @@ public class Liste {
     public ArrayList<Rom> getRomListe() {return romListe;}
     public ArrayList<Kunder> getKundeListe() { return kundeListe;}
     public ArrayList<Utsjekkinger> getUtsjekkingListe() { return utsjekkingListe;}
-    public ArrayList<Innsjekkinger> getInnsjekkinngerListe() { return innsjekkinngerListe;}
+    public ArrayList<Innsjekkinger> getInnsjekkingerListe() { return innsjekkingerListe;}
     public ArrayList<Avbestillinger> getAvbestillingerListe() { return avbestillingerListe;}
     public ArrayList<Reservasjoner> getReservasjonerListe() { return reservasjonerListe;}
 
