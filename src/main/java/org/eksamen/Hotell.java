@@ -26,12 +26,9 @@ public class Hotell {
 
     // FUNKSJONALITETER UNDER
     // KUNDE
-    // Opprette bruker?
-    // Det skal være mulig å lage bruker
-    // Påvirker kunde
-    // Bruker konstruktør for å enkelt legge til ny bruker
-    // Bruker newBruker = new Bruker(1, "Ola Nordmann", "ola@nordmann.no", "12345678");
 
+    // Funksjon for å legge til en ny kunde. Funksjonen er laget av kandidatnummer 7001
+    // Testet av kandidatnummer ..
     public void leggTilNyKunde() {
         Scanner skanner = new Scanner(System.in);
 
@@ -112,6 +109,9 @@ public class Hotell {
     // Opprettes innsjekkingsid og innsjekkingsdato
     // Påvirker innsjekkingstabellen/liste
 
+    // Funksjon for innsjekking av kunde. Funksjonen er laget av kandidatnummer 7001
+    // Testet av kandidatnummer ...
+
     public void innsjekking () {
         Scanner skanner = new Scanner(System.in);
         System.out.println("Oppgi reservasjonsid:");
@@ -130,6 +130,9 @@ public class Hotell {
     // Utsjekking av kunde
     // Resepsjonen skal kunne sjekke ut en kunde ved hjelp av reservasjonsid
     // Får en utsjekkingsdato time
+
+    // Funksjon for å utsjekking av gjest. Funksjonen er laget av kandidatnummer 7001
+    // Funksjonen er testet av kandidatnummer ...
 
     public void utsjekking () {
         Scanner skanner = new Scanner(System.in);
@@ -153,6 +156,7 @@ public class Hotell {
     // Romid, romnummer, romtype, pris
     // Påvirker romtabell / liste
     // Bruker konstruktør for å enkelt legge til nytt rom
+
 
 
     public void leggTilRom(int romNummer, String romType, float pris) {
