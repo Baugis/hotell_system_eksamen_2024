@@ -262,6 +262,7 @@ public class Main {
             System.out.println("1. Søk etter rom");
             System.out.println("2. Booke rom");
             System.out.println("3. Opprett kundebruker");
+            System.out.println("4. Avbestill reservasjon");
             System.out.println("9. Tilbake til hovedmenyen");
             System.out.println("Vennligst velg: ");
             System.out.println("----------------------------------------");

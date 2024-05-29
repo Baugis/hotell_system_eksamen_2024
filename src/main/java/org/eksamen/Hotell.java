@@ -95,7 +95,7 @@ public class Hotell {
 
         ArrayList<Reservasjoner> reservasjonListe = liste.getReservasjonerListe();
 
-        // Loop through the reservations list
+        // Går gjennom alle reservasjonene
         for (Reservasjoner reservasjon : reservasjonListe) {
             boolean found = false;
             if (kundeId == reservasjon.getKundeid() && reservasjonId == reservasjon.getReservasjonid()) {
