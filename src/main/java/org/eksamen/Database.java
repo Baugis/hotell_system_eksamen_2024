@@ -107,7 +107,7 @@ public class Database {
              PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, roomId);
             statement.executeUpdate();
-            System.out.println("Room with ID " + roomId + " deleted successfully.");
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

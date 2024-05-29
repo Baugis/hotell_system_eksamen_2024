@@ -50,8 +50,6 @@ public class Hotell {
 
         liste.getKundeListe().add(kunde);
 
-        liste.printKundeListe();
-
         System.out.println("Velkommen til oss, " + navn + "!");
     }
 
@@ -130,6 +128,7 @@ public class Hotell {
             liste.getReservasjonerListe().add(reservasjon);
 
             System.out.println("Reservasjonen er lagt til");
+            System.out.println("Din reservasjonsid er:" + reservasjonid);
         }
 
 
@@ -169,7 +168,7 @@ public class Hotell {
 
                     liste.getAvbestillingerListe().add(avbestillinger);
 
-                    System.out.println("Rom allerede avbestilt");
+                    System.out.println("Bestilling med reservasjonsid " + reservasjonId + " er nå avbestilt!");
                     return;
                 } else {
                     System.out.println("Rom allerede avbestilt");

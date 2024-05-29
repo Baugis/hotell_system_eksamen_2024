@@ -1,5 +1,4 @@
 package org.eksamen;
-
 import org.eksamen.Entity.*;
 
 import java.time.LocalDateTime;
