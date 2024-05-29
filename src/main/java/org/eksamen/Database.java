@@ -102,6 +102,18 @@ public class Database {
         }
     }
 
+    public void deleteRoom(int roomId) {
+        String query = "DELETE FROM tblrom WHERE romid = ?";
+        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, roomId);
+            statement.executeUpdate();
+            System.out.println("Room with ID " + roomId + " deleted successfully.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     private boolean entityExistsInDatabase(String tableName, String idColumn, int id, Connection connection) throws SQLException {
         String query = "SELECT COUNT(*) FROM " + tableName + " WHERE " + idColumn + " = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {

@@ -199,6 +199,9 @@ public class Hotell {
 
         if (rom != null){
             liste.getRomListe().remove(rom);
+
+            database.deleteRoom(romid);
+
             return true;
         } else{
             String ikkeFunnet = "Rommet finnes ikke.";
