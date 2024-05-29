@@ -25,6 +25,8 @@ public class Liste {
 
     public ArrayList<Kunder> getKundeListe() { return kundeListe;}
 
+    public ArrayList<Innsjekkinger> getInnsjekkingListe() { return innsjekkingListe;}
+
     // Opprette Data objekt for å
     public Liste(Database database) {
         this.database = database;

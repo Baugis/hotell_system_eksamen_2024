@@ -37,4 +37,13 @@ public class Innsjekkinger {
     public void setReservasjonsid(int reservasjonsid) {this.reservasjonsid = reservasjonsid;}
 
     public void setInnsjekkingdato(LocalDateTime innsjekkingdato) {this.innsjekkingdato = innsjekkingdato;}
+
+    @Override
+    public String toString() {
+        return "Innsjekkinger{" +
+                "innsjekkingsid=" + innsjekkingsid +
+                ", reservasjonsid='" + reservasjonsid + '\'' +
+                ", innsjekkingdato='" + innsjekkingdato +
+                '}';
+    }
 }
