@@ -8,6 +8,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.time.LocalDateTime;
 import java.util.Scanner;
+import java.util.Iterator;
 
 public class Hotell {
     private Database database;
@@ -85,25 +86,21 @@ public class Hotell {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-        for (Rom rom : tilgjengeligeRom) {
+        Iterator<Rom> romIterator = tilgjengeligeRom.iterator();
+        while (romIterator.hasNext()) {
+            Rom rom = romIterator.next();
             for (Reservasjoner reservasjon : liste.getReservasjonerListe()) {
-
-                // Konvertere fra String for å søke dato
                 LocalDate startDatoLocal = LocalDate.parse(startDato, formatter);
                 LocalDate sluttDatoLocal = LocalDate.parse(sluttDato, formatter);
                 LocalDate reservasjonStartDato = LocalDate.parse(reservasjon.getStartdato(), formatter);
                 LocalDate reservasjonSluttDato = LocalDate.parse(reservasjon.getSluttdato(), formatter);
 
-                System.out.println(startDatoLocal);
-                System.out.println(sluttDatoLocal);
-                System.out.println(reservasjonStartDato);
-                System.out.println(reservasjonSluttDato);
-
-                // Kriterier for dato
+                // Dato kriterier
                 if (rom.getRomid() == reservasjon.getRomid() &&
-                        startDatoLocal.isAfter(reservasjonStartDato) ||
-                        sluttDatoLocal.isBefore(reservasjonSluttDato)) {
-                    tilgjengeligeRom.remove(rom);
+                        startDatoLocal.isBefore(reservasjonSluttDato) &&
+                        sluttDatoLocal.isAfter(reservasjonStartDato)) {
+                    System.out.println("yo");
+                    romIterator.remove();
                 }
             }
         }
@@ -117,8 +114,19 @@ public class Hotell {
             }
         }
 
-
         // Reservasjon basert på tilgjengelige rom
+        System.out.println("Hvilket rom ønsker du");
+        String bookeRom = skanner.nextLine();
+
+        System.out.println("Kundenummer");
+        String kundeid = skanner.nextLine();
+
+        int reservasjonid = liste.getReservasjonerListe().size() + 1;
+        int romid = Integer.parseInt(bookeRom);
+        String status = "Bestilt";
+
+        Reservasjoner reservasjon = new Reservasjoner(reservasjonid, Integer.parseInt(kundeid), romid, startDato, sluttDato, status);
+        liste.getReservasjonerListe().add(reservasjon);
     }
 
     // Funksjon for reservasjon av rom. Funksjonen er laget av kandidatnummer 7017
