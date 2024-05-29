@@ -73,6 +73,18 @@ public class Reservasjoner {
     public void setStatus(String status){
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "Reservasjoner{" +
+                "kundeId=" + kundeid +
+                ", reservasjonId=" + reservasjonid +
+                ", startdato='" + startdato + '\'' +
+                ", sluttdato='" + sluttdato + '\'' +
+                ", status='" + status + '\'' +
+                ", romid='" + romid + '\'' +
+                '}';
+    }
 }
 
 
