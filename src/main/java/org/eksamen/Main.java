@@ -3,8 +3,8 @@ import java.util.Scanner;
 import org.eksamen.Hotell;
 
 public class Main {
-
     Hotell hotell = new Hotell();
+
     public static void main(String[] args) {
         Scanner skanner = new Scanner(System.in);
 
@@ -61,7 +61,7 @@ public class Main {
         }
     }
 
-    private static void visHovedmeny() {
+    public void visHovedmeny() {
         System.out.println("Velkommen til Hotell Cæsar!");
         System.out.println("Du har nå tre valg.");
         System.out.println("1. Administrasjon");
@@ -69,11 +69,11 @@ public class Main {
         System.out.println("3. Kunde");
         System.out.println("9. Avslutt");
         System.out.println("----------------------------------------");
+        hotell.getListe().printRomListe();
 
     }
 
     public static void administrasjon(Scanner skanner) {
-        Hotell hotell = new Hotell();
         boolean fortsettISubmeny = true;
         while (fortsettISubmeny) {
             System.out.println("Administrasjon");
