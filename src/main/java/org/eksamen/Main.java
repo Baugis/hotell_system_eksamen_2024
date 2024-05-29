@@ -197,6 +197,10 @@ public class Main {
                         System.out.println("Booke rom valgt.");
                         System.out.println("----------------------------------------");
                         break;
+                    case 3:
+                        System.out.println("Legge til kundebruker er valgt");
+                        System.out.println("----------------------------------------");
+                        break;
                     case 9:
                         // Gå tilbake til hovedmenyen
                         fortsettISubmeny = false;
