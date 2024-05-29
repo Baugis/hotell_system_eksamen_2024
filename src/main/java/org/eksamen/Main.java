@@ -123,7 +123,6 @@ public class Main {
             System.out.println("Vennligst velg: ");
             System.out.println("----------------------------------------");
 
-
             try {
                 int subValg = Integer.parseInt(skanner.nextLine());
                 switch (subValg) {
