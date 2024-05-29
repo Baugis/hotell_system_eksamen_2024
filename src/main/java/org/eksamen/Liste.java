@@ -146,4 +146,8 @@ public class Liste {
         }
     }
 
+    public Database getDatabase() {
+        return database;
+    }
+
 }

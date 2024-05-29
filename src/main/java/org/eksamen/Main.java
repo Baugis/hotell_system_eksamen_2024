@@ -1,5 +1,9 @@
 package org.eksamen;
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import org.eksamen.Entity.Kunder;
+import org.eksamen.Entity.Rom;
 import org.eksamen.Hotell;
 
 public class Main {
@@ -39,6 +43,17 @@ public class Main {
                         System.out.println("Takk for nå! Avslutter program.");
                         System.out.println("----------------------------------------");
                         skanner.close();
+
+                        // Sender til database
+                        // ROM
+                        ArrayList<Rom> romListe = hotell.getListe().getRomListe();
+                        String romQuery = "";
+                        // hotell.getListe().getDatabase().sendData(romQuery, romListe);
+
+                        ArrayList<Kunder> kundeListe = hotell.getListe().getKundeListe();
+                        String kundeQuery = "INSERT INTO tblkunde (kundeid, navn, epost, telefon) VALUES (?, ?, ?, ?)";
+                        hotell.getListe().getDatabase().sendData(kundeQuery, kundeListe);
+
                         System.exit(0);
                         break;
 
