@@ -39,6 +39,7 @@ public class Hotell {
         String epost = skanner.nextLine();
 
         System.out.println("Oppgi telefonnummer:");
+
         String telefon = skanner.nextLine();
 
         // Genererer kundeID
@@ -51,6 +52,8 @@ public class Hotell {
         liste.getKundeListe().add(kunde);
 
         liste.printKundeListe();
+
+        System.out.println("Velkommen til oss, " + navn + "!");
     }
 
     // Oppretter en søkealgoritme hvor bruker kan søke etter rom basert på ulike krav
@@ -98,6 +101,9 @@ public class Hotell {
         System.out.println("Oppgi reservasjonsid:");
         String reservasjonsid = skanner.nextLine();
 
+        // Må sjekke om reservasjons id finnes i reservasjonslisten først og deretter videre kode.
+        // Samme i utsjekking
+
         int reservasjonsidInt = Integer.parseInt(reservasjonsid);
 
         int nyInnsjekkingsId = liste.getInnsjekkingerListe().size() + 1;
@@ -106,6 +112,8 @@ public class Hotell {
 
         Innsjekkinger innsjekking = new Innsjekkinger(nyInnsjekkingsId, reservasjonsidInt, innsjekkingdato);
         liste.getInnsjekkingerListe().add(innsjekking);
+
+        System.out.println("Kunde med reservasjonsid " + reservasjonsid + " er sjekket inn med timestamp " + innsjekkingdato);
     }
 
     // Funksjon for å utsjekking av gjest. Funksjonen er laget av kandidatnummer 7001
@@ -123,6 +131,8 @@ public class Hotell {
 
         Utsjekkinger utsjekking = new Utsjekkinger(nyUtsjekkingsId, reservasjonsidInt, utsjekkingdato);
         liste.getUtsjekkingListe().add(utsjekking);
+
+        System.out.println("Kunde med reservasjonsid " + reservasjonsid + " er sjekket ut med timestamp " + utsjekkingdato);
     }
 
 
@@ -135,6 +145,8 @@ public class Hotell {
         Rom rom = new Rom(nyRomId, romNummer, romType, pris);
 
         liste.getRomListe().add(rom);
+
+        System.out.println("Rommet med romid " + nyRomId + " er lagt til");
     }
 
     // Funksjonen for å slette rom er kodet av kandidatnummer 7041
