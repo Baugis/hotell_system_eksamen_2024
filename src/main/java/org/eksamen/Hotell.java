@@ -67,6 +67,8 @@ public class Hotell {
     // Bruker skal så skrive inn ønsket romtype
     // Det skal deretter printes ut de tilgjengelige rommene
 
+    // Oppretter en søkealgoritme hvor bruker kan søke etter rom basert på ulike krav
+    // Funksjonen er laget av kandidatnummer 7001 og kandidatnummer 7017
     public void sokeRom() {
         Scanner skanner = new Scanner(System.in);
 
@@ -84,8 +86,6 @@ public class Hotell {
 
         System.out.println("Oppgi ønsket romtype:");
         String romtype = skanner.nextLine();
-
-
     }
 
     // Reservere rom
