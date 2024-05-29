@@ -1,11 +1,9 @@
 package org.eksamen;
 
-import org.eksamen.Entity.Innsjekkinger;
-import org.eksamen.Entity.Rom;
-import org.eksamen.Entity.Kunder;
-import org.eksamen.Entity.Utsjekkinger;
+import org.eksamen.Entity.*;
 import org.eksamen.Liste;
 
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.time.LocalDateTime;
@@ -85,7 +83,52 @@ public class Hotell {
         System.out.println("Oppgi ønsket romtype:");
         String romtype = skanner.nextLine();
 
+        // Filtrere gjennom listene
+        ArrayList<Rom> tilgjengeligeRom = new ArrayList<>();
+        for (Rom rom : liste.getRomListe()) {
 
+            // Kriterier for rom
+            if (rom.getRomtype().equalsIgnoreCase(romtype) && rom.getPris() < maksPris && rom.getPris() > minPris) {
+                tilgjengeligeRom.add(rom);
+            }
+        }
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        for (Rom rom : tilgjengeligeRom) {
+            for (Reservasjoner reservasjon : liste.getReservasjonerListe()) {
+
+                // Konvertere fra String for å søke dato
+                LocalDate startDatoLocal = LocalDate.parse(startDato, formatter);
+                LocalDate sluttDatoLocal = LocalDate.parse(sluttDato, formatter);
+                LocalDate reservasjonStartDato = LocalDate.parse(reservasjon.getStartdato(), formatter);
+                LocalDate reservasjonSluttDato = LocalDate.parse(reservasjon.getSluttdato(), formatter);
+
+                System.out.println(startDatoLocal);
+                System.out.println(sluttDatoLocal);
+                System.out.println(reservasjonStartDato);
+                System.out.println(reservasjonSluttDato);
+
+                // Kriterier for dato
+                if (rom.getRomid() == reservasjon.getRomid() &&
+                        startDatoLocal.isAfter(reservasjonStartDato) ||
+                        sluttDatoLocal.isBefore(reservasjonSluttDato)) {
+                    tilgjengeligeRom.remove(rom);
+                }
+            }
+        }
+
+        // Resultat (rom tilgjengelig)
+        if (tilgjengeligeRom.isEmpty()) {
+            System.out.println("Ingen rom");
+        } else {
+            for (Rom rom : tilgjengeligeRom) {
+                System.out.println(rom);
+            }
+        }
+
+
+        // Reservasjon basert på tilgjengelige rom
     }
 
     // Reservere rom
