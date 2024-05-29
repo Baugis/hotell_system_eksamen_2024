@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
+// Liste er opprettet og kodet av kandidatnummer 7017 og 7035 (??)
 public class Liste {
     // ArrayList for hver tabell
     private ArrayList<Rom> romListe = new ArrayList<>();

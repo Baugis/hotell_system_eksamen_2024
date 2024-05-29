@@ -3,6 +3,7 @@ package org.eksamen.Entity;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
+// Avbestillinger er opprettet av kandidatnummer 7001
 public class Innsjekkinger {
 
     // Konstruktør

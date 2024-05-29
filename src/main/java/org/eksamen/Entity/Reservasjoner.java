@@ -2,6 +2,7 @@ package org.eksamen.Entity;
 
 import java.time.LocalDateTime;
 
+// Reservasjoner er opprettet av kandidatnummer ...
 public class Reservasjoner {
 
 

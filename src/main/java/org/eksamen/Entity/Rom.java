@@ -1,5 +1,6 @@
 package org.eksamen.Entity;
 
+// Rom er opprettet av kandidatnummer ...
 public class Rom {
 
     private int romid;

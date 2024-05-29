@@ -1,6 +1,7 @@
 package org.eksamen.Entity;
 import java.time.LocalDateTime;
 
+// Avbestillinger er opprettet av kandidatnummer 7001
 public class Avbestillinger {
 
     // Konstruktør

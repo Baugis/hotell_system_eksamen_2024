@@ -2,6 +2,7 @@ package org.eksamen.Entity;
 
 import java.time.LocalDateTime;
 
+// Utsjekkinger er opprettet av kandidatnummer ...
 public class Utsjekkinger {
 
 

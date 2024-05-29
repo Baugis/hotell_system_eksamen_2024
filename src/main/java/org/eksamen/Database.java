@@ -11,6 +11,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.sql.PreparedStatement;
 
+// Database er opprettet og kodet av kandidatnummer 7017 og 7035
 public class Database {
 
     // Hent data fra tabeller i database

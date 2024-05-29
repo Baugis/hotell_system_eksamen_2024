@@ -6,6 +6,7 @@ import java.util.Scanner;
 import org.eksamen.Entity.*;
 import org.eksamen.Hotell;
 
+// Main er laget av alle kandidatene
 public class Main {
     static Hotell hotell = new Hotell();
     public static void main(String[] args) {
