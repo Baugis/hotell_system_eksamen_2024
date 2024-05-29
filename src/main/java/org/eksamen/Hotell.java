@@ -1,6 +1,8 @@
 package org.eksamen;
 
 import org.eksamen.Entity.Rom;
+import org.eksamen.Entity.Kunder;
+import org.eksamen.Liste;
 
 import java.util.Scanner;
 
@@ -37,12 +39,15 @@ public class Hotell {
         // Genererer kundeID
         // Husk å legg til genrerererNyKundeId i kunder klassen så den returnerer
         // en unik kundeId basert på tidlgiere kunder. telle + 1
-        int nyKundeId = Kunder.generererNyKundeId();
+        int nyKundeId = Kunder.genererNyKundeId();
 
-        Kunder.leggtilKunde(nyKundeId, navn, epost, telefon);
+        Kunder kunde = new Kunder(nyKundeId, navn, epost, telefon);
+
+        // USIKKER PÅ HVILKEN AV DISSE METODENE JEG SKAL BRUKE FOR Å LEGGE TIL ??????????????????????????????????
+        liste.getKundeListe().add(kunde);
+
+        Kunder.leggTilKunde(kunde);
     }
-
-
 
     // Søkealgoritme
     // Bruker skal søke på rom etter tilgjengelige rom, pris og romtype
@@ -69,6 +74,7 @@ public class Hotell {
     // Utsjekking av kunde
     // Resepsjonen skal kunne sjekke ut en kunde ved hjelp av reservasjonsid
     // Får en utsjekkingsdato time
+
 
     // ADMINISTRASJON
     // Legge til rom
