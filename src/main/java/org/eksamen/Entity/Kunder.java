@@ -43,13 +43,6 @@ public class Kunder {
 
     public void setTelefon(String telefon) {this.telefon = telefon;}
 
-    public static void leggTilKunde(Kunder kunde) { kundeListe.add(kunde);
-    }
-
-    public static int genererNyKundeId() {
-        return kundeListe.size() + 1;
-    }
-
     @Override
     public String toString() {
         return "Kunder{" +

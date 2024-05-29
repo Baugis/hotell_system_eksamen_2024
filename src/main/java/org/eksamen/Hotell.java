@@ -39,15 +39,14 @@ public class Hotell {
         // Genererer kundeID
         // Husk å legg til genrerererNyKundeId i kunder klassen så den returnerer
         // en unik kundeId basert på tidlgiere kunder. telle + 1
-        int nyKundeId = Kunder.genererNyKundeId();
+        int nyKundeId = liste.getKundeListe().size() + 1;
 
         Kunder kunde = new Kunder(nyKundeId, navn, epost, telefon);
 
-        // USIKKER PÅ HVILKEN AV DISSE METODENE JEG SKAL BRUKE FOR Å LEGGE TIL ??????????????????????????????????
         liste.getKundeListe().add(kunde);
-
-        Kunder.leggTilKunde(kunde);
     }
+
+
 
     // Søkealgoritme
     // Bruker skal søke på rom etter tilgjengelige rom, pris og romtype
