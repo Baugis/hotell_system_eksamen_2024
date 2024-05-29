@@ -1,10 +1,13 @@
 package org.eksamen;
 
+import org.eksamen.Entity.Innsjekkinger;
 import org.eksamen.Entity.Rom;
 import org.eksamen.Entity.Kunder;
+import org.eksamen.Entity.Utsjekkinger;
 import org.eksamen.Liste;
 
 import java.util.ArrayList;
+import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class Hotell {
@@ -12,12 +15,13 @@ public class Hotell {
     private Database database;
     private Liste liste;
 
-
-    private
-
     public Hotell() {
         this.database = new Database();
         this.liste = new Liste(database);
+    }
+
+    public Liste getListe() {
+        return liste;
     }
 
     // FUNKSJONALITETER UNDER
@@ -43,14 +47,11 @@ public class Hotell {
         // Genererer kundeID
         // Husk å legg til genrerererNyKundeId i kunder klassen så den returnerer
         // en unik kundeId basert på tidlgiere kunder. telle + 1
-        int nyKundeId = Kunder.genererNyKundeId();
+        int nyKundeId = liste.getKundeListe().size() + 1;
 
         Kunder kunde = new Kunder(nyKundeId, navn, epost, telefon);
 
-        // USIKKER PÅ HVILKEN AV DISSE METODENE JEG SKAL BRUKE FOR Å LEGGE TIL ??????????????????????????????????
         liste.getKundeListe().add(kunde);
-
-        Kunder.leggTilKunde(kunde);
     }
 
     // Søkealgoritme
@@ -75,9 +76,39 @@ public class Hotell {
     // Opprettes innsjekkingsid og innsjekkingsdato
     // Påvirker innsjekkingstabellen/liste
 
+    public void innsjekking () {
+        Scanner skanner = new Scanner(System.in);
+        System.out.println("Oppgi reservasjonsid:");
+        String reservasjonsid = skanner.nextLine();
+
+        int reservasjonsidInt = Integer.parseInt(reservasjonsid);
+
+        int nyInnsjekkingsId = liste.getInnsjekkingerListe().size() + 1;
+
+        String innsjekkingdato = String.valueOf(LocalDateTime.now());
+
+        Innsjekkinger innsjekking = new Innsjekkinger(nyInnsjekkingsId, reservasjonsidInt, innsjekkingdato);
+        liste.getInnsjekkingerListe().add(innsjekking);
+    }
+
     // Utsjekking av kunde
     // Resepsjonen skal kunne sjekke ut en kunde ved hjelp av reservasjonsid
     // Får en utsjekkingsdato time
+
+    public void utsjekking () {
+        Scanner skanner = new Scanner(System.in);
+        System.out.println("Oppgi reservasjonsid:");
+        String reservasjonsid = skanner.nextLine();
+
+        int reservasjonsidInt = Integer.parseInt(reservasjonsid);
+
+        int nyUtsjekkingsId = liste.getUtsjekkingListe().size() + 1;
+
+        String utsjekkingdato = String.valueOf(LocalDateTime.now());
+
+        Utsjekkinger utsjekking = new Utsjekkinger(nyUtsjekkingsId, reservasjonsidInt, utsjekkingdato);
+        liste.getUtsjekkingListe().add(utsjekking);
+    }
 
 
     // ADMINISTRASJON

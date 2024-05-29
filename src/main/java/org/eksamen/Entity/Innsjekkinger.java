@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 public class Innsjekkinger {
 
     // Konstruktør
-    public Innsjekkinger (int innsjekkingsid, int reservasjonsid, LocalDateTime innsjekkingdato) {
+    public Innsjekkinger (int innsjekkingsid, int reservasjonsid, String innsjekkingdato) {
         this.innsjekkingsid = innsjekkingsid;
         this.reservasjonsid = reservasjonsid;
         this.innsjekkingdato = innsjekkingdato;
@@ -16,7 +16,7 @@ public class Innsjekkinger {
 
     private int reservasjonsid;
 
-    private LocalDateTime innsjekkingdato;
+    private String innsjekkingdato;
 
     // Lager gettere
     public int getInnsjekkingsid() {
@@ -27,7 +27,7 @@ public class Innsjekkinger {
         return reservasjonsid;
     }
 
-    public LocalDateTime getInnsjekkingdato() {
+    public String getInnsjekkingdato() {
         return innsjekkingdato;
     }
 
@@ -36,5 +36,14 @@ public class Innsjekkinger {
 
     public void setReservasjonsid(int reservasjonsid) {this.reservasjonsid = reservasjonsid;}
 
-    public void setInnsjekkingdato(LocalDateTime innsjekkingdato) {this.innsjekkingdato = innsjekkingdato;}
+    public void setInnsjekkingdato(String innsjekkingdato) {this.innsjekkingdato = innsjekkingdato;}
+
+    @Override
+    public String toString() {
+        return "Innsjekkinger{" +
+                "innsjekkingsid=" + innsjekkingsid +
+                ", reservasjonsid='" + reservasjonsid + '\'' +
+                ", innsjekkingdato='" + innsjekkingdato +
+                '}';
+    }
 }
