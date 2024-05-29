@@ -75,7 +75,7 @@ public class Main {
         }
     }
 
-    private static void visHovedmeny() {
+    public static void visHovedmeny() {
         System.out.println("Velkommen til Hotell Cæsar!");
         System.out.println("Du har nå tre valg.");
         System.out.println("1. Administrasjon");
@@ -164,11 +164,15 @@ public class Main {
                         // Håndter innsjekk
                         System.out.println("Innsjekk valgt.");
                         System.out.println("----------------------------------------");
+                        hotell.innsjekking();
+
                         break;
                     case 2:
                         // Håndter utsjekk
                         System.out.println("Utsjekk valgt.");
                         System.out.println("----------------------------------------");
+                        hotell.utsjekking();
+
                         break;
                     case 9:
                         // Gå tilbake til hovedmenyen
@@ -214,7 +218,6 @@ public class Main {
                     case 3:
                         System.out.println("Legge til kundebruker er valgt");
                         System.out.println("----------------------------------------");
-
                         hotell.leggTilNyKunde();
                         break;
                     case 9:
@@ -224,6 +227,7 @@ public class Main {
                     default:
                         System.out.println("Ugyldig valg. Vennligst velg på nytt.");
                         System.out.println("----------------------------------------");
+                        hotell.leggTilNyKunde();
                         break;
                 }
             } catch (NumberFormatException e) {

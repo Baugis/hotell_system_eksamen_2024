@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class Hotell {
-
     private Database database;
     private Liste liste;
 
@@ -62,15 +61,32 @@ public class Hotell {
     // Bruker skal kunne oppgi en fra-til pris
     // Bruker skal kunne oppgi ønsket romtype
 
+    // Bruker skal først skrive inn til-fra dato
+    // Bruker skal så skrive inn til-fra pris
+    // Bruker skal så skrive inn ønsket romtype
+    // Det skal deretter printes ut de tilgjengelige rommene
+
+    public void sokeRom() {
+        System.out.println("Her");
+    }
+
     // Reservere rom
     // Bruker skal kunne bestille/reservere rom
     // Bruker må skrive inn kundeid, startdato og sluttdato
     // Dette påvirker reservasjonstabellen / reservasjonslisten
 
+    public void reservasjon() {
+        System.out.println("Reservasjon");
+    }
+
     // Avbestille rom
     // Bruker skal kunne avbestille egen reservasjon
     // Bruker må skrive inn kundeid for å få opp reservasjonen og bekrefte avbestilling
     // Reservasjonstabellen / reservasjonslisten
+
+    public void avbestilleRom() {
+        System.out.println("Avbestille rom");
+    }
 
     // RESEPSJON
     // Innsjekking av kunde
