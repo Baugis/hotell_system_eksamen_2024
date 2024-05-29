@@ -153,8 +153,6 @@ public class Hotell {
 
     }
 
-
-
     public Rom finnRom(int romid) {
         for (Rom rom : liste.getRomListe()) {
             if (rom != null && rom.getRomid() == romid) {
