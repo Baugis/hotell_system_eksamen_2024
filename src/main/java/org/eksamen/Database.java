@@ -3,6 +3,8 @@ package org.eksamen;
 import org.eksamen.Entity.*;
 
 import java.sql.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Database {
@@ -62,7 +64,13 @@ public class Database {
                     if (!entityExistsInDatabase("tblavbestilling", "avbestillingid", avbestilling.getAvbestillingsid(), connection)) {
                         statement.setInt(1, avbestilling.getAvbestillingsid());
                         statement.setInt(2, avbestilling.getReservasjonsid());
-                        statement.setString(3, avbestilling.getAvbestillingdato());
+
+                        LocalDateTime dateTime = LocalDateTime.parse(avbestilling.getAvbestillingdato(), DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"); // Define a formatter without milliseconds
+                        String formattedDateTime = dateTime.format(formatter); // Format the LocalDateTime without milliseconds
+                        Timestamp timestamp = Timestamp.valueOf(formattedDateTime);
+                        statement.setTimestamp(3, timestamp);
+
                         statement.addBatch();
                     }
                 } else if (value instanceof Innsjekkinger) {
@@ -70,7 +78,7 @@ public class Database {
                     if (!entityExistsInDatabase("tblinnsjekking", "innsjekkingid", innsjekking.getInnsjekkingsid(), connection)) {
                         statement.setInt(1, innsjekking.getInnsjekkingsid());
                         statement.setInt(2, innsjekking.getReservasjonsid());
-                        statement.setString(3, innsjekking.getInnsjekkingdato());
+                        statement.setDate(3, Date.valueOf(innsjekking.getInnsjekkingdato()));
                         statement.addBatch();
                     }
                 } else if (value instanceof Reservasjoner) {
@@ -81,7 +89,7 @@ public class Database {
                     if (!entityExistsInDatabase("tblutsjekking", "utsjekkingid", utsjekking.getUtsjekkingid(), connection)) {
                         statement.setInt(1, utsjekking.getUtsjekkingid());
                         statement.setInt(2, utsjekking.getReservasjonid());
-                        statement.setString(3, utsjekking.getUtsjekkingdato());
+                        statement.setDate(3, Date.valueOf(utsjekking.getUtsjekkingdato()));
                         statement.addBatch();
                     }
                 }

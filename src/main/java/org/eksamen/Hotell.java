@@ -7,6 +7,7 @@ import org.w3c.dom.ls.LSOutput;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Hotell {
@@ -112,9 +113,25 @@ public class Hotell {
 
         // Loop through the reservations list
         for (Reservasjoner reservasjon : reservasjonListe) {
+            boolean found = false;
             if (kundeId == reservasjon.getKundeid() && reservasjonId == reservasjon.getReservasjonid()) {
-                reservasjon.setStatus("Avbestillt");
-                System.out.println(reservasjon);
+                if (!Objects.equals(reservasjon.getStatus(), "avbestilt")) {
+                    // Endrer status fra "Bekreftet" til "Avbestilt" på reservasjon
+                    reservasjon.setStatus("avbestilt");
+
+                    // Legger til rad i avbestillingtabbelen med info om avbestilling
+                    int nyAvbestillingid = liste.getAvbestillingerListe().size() + 1;
+                    String avbestillingDato = String.valueOf(LocalDateTime.now());
+                    Avbestillinger avbestillinger = new Avbestillinger(nyAvbestillingid, reservasjonId, avbestillingDato);
+
+                    liste.getAvbestillingerListe().add(avbestillinger);
+
+                    System.out.println("Rom allerede avbestilt");
+                    return;
+                } else {
+                    System.out.println("Rom allerede avbestilt");
+                    return;
+                }
             }
         }
     }
