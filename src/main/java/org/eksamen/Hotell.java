@@ -41,17 +41,19 @@ public class Hotell {
 
         String telefon = skanner.nextLine();
 
-        // Genererer kundeID
-        // Husk å legg til genrerererNyKundeId i kunder klassen så den returnerer
-        // en unik kundeId basert på tidlgiere kunder. telle + 1
-        int nyKundeId = liste.getKundeListe().size() + 1;
+        // Hvis telefonnummer finnes så ikke legg til:
+        if (liste.getKundeListe(telefon)) {
+            System.out.println("hællæ du eksisterer allerede");
+        } else {
+            // Genererer kundeID
+            int nyKundeId = liste.getKundeListe().size() + 1;
 
-        Kunder kunde = new Kunder(nyKundeId, navn, epost, telefon);
+            Kunder kunde = new Kunder(nyKundeId, navn, epost, telefon);
 
-        liste.getKundeListe().add(kunde);
+            liste.getKundeListe().add(kunde);
 
-        liste.printKundeListe();
-    }
+            liste.printKundeListe();
+        }
 
         System.out.println("Velkommen til oss, " + navn + "!");
     }
@@ -127,8 +129,7 @@ public class Hotell {
 
     // Funksjon for innsjekking av kunde. Funksjonen er laget av kandidatnummer 7001
     // Funksjonen er testet og godkjent av kandidatnummer ..
-
-    public void innsjekking () {
+    public void innsjekking() {
         Scanner skanner = new Scanner(System.in);
         System.out.println("Oppgi reservasjonsid:");
         String reservasjonsid = skanner.nextLine();
@@ -150,7 +151,7 @@ public class Hotell {
 
     // Funksjon for å utsjekking av gjest. Funksjonen er laget av kandidatnummer 7001
     // Funksjonen er testet og godkjent av kandidatnummer ..
-    public void utsjekking () {
+    public void utsjekking() {
         Scanner skanner = new Scanner(System.in);
         System.out.println("Oppgi reservasjonsid:");
         String reservasjonsid = skanner.nextLine();
@@ -198,3 +199,4 @@ public class Hotell {
         return null;
     }
 }
+
