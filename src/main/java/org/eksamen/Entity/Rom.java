@@ -1,16 +1,13 @@
 package org.eksamen.Entity;
 
-// Rom er opprettet av kandidatnummer ...
+// Rom er opprettet av kandidatnummer 7041
 public class Rom {
-
     private int romid;
-
     private int romnummer;
-
     private String romtype;
-
     private float pris;
 
+    // Oppretter konstruktør
     public Rom(int romid, int romnummer, String romtype, float pris){
         this.romid = romid;
         this.romnummer = romnummer;
@@ -18,6 +15,7 @@ public class Rom {
         this.pris = pris;
     }
 
+    // Oppretter gettere
     public int getRomid(){
         return romid;
     }
@@ -34,6 +32,7 @@ public class Rom {
         return pris;
     }
 
+    // Oppretter settere
     public void setRomid(int romid){
         this.romid = romid;
     }

@@ -28,7 +28,7 @@ public class Hotell {
     // MENYVALG KUNDE
 
     // Funksjon for å legge til en ny kunde. Funksjonen er laget av kandidatnummer 7001
-    // Testet av kandidatnummer ..
+    // Testet og godkjent av kandidatnummer 7035
     public void leggTilNyKunde() {
         Scanner skanner = new Scanner(System.in);
 
@@ -91,7 +91,7 @@ public class Hotell {
     // MENYVALG RESEPSJON
 
     // Funksjon for innsjekking av kunde. Funksjonen er laget av kandidatnummer 7001
-    // Funksjonen er testet og godkjent av kandidatnummer ...
+    // Funksjonen er testet og godkjent av kandidatnummer ..
 
     public void innsjekking () {
         Scanner skanner = new Scanner(System.in);
@@ -109,7 +109,7 @@ public class Hotell {
     }
 
     // Funksjon for å utsjekking av gjest. Funksjonen er laget av kandidatnummer 7001
-    // Funksjonen er testet og godkjent av kandidatnummer ...
+    // Funksjonen er testet og godkjent av kandidatnummer ..
     public void utsjekking () {
         Scanner skanner = new Scanner(System.in);
         System.out.println("Oppgi reservasjonsid:");
@@ -128,7 +128,7 @@ public class Hotell {
 
     // MENYVALG ADMINISTRASJON
 
-    // Funksjonen for å legge til rom er kodet av kandidatnummer ...
+    // Funksjonen for å legge til rom er kodet av kandidatnummer 7041
     // Funksjonen er testet og godkjent av kandidatnummer ...
     public void leggTilRom(int romNummer, String romType, float pris) {
         int nyRomId = liste.getRomListe().size() + 1;
@@ -137,7 +137,7 @@ public class Hotell {
         liste.getRomListe().add(rom);
     }
 
-    // Funksjonen for å slette rom er kodet av kandidatnummer ...
+    // Funksjonen for å slette rom er kodet av kandidatnummer 7041
     // Funksjonen er testet og godkjent av kandidatnummer ...
 
     public void slettRom(int romid, int romnummer, String romtype, float pris) {

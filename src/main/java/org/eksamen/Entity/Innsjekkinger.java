@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 // Avbestillinger er opprettet av kandidatnummer 7001
 public class Innsjekkinger {
 
-    // Konstruktør
+    // Oppretter konstruktør
     public Innsjekkinger (int innsjekkingsid, int reservasjonsid, String innsjekkingdato) {
         this.innsjekkingsid = innsjekkingsid;
         this.reservasjonsid = reservasjonsid;

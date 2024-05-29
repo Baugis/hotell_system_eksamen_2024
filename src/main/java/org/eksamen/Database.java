@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.sql.PreparedStatement;
 
 // Database er opprettet og kodet av kandidatnummer 7017 og 7035
+// Koblingene er testet og godkjent av kandidatnummer 7001 og 7041
 public class Database {
 
     // Hent data fra tabeller i database
