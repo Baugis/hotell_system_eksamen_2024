@@ -50,4 +50,14 @@ public class Kunder {
     public static int genererNyKundeId() {
         return kundeliste.size() + 1;
     }
+
+    @Override
+    public String toString() {
+        return "Kunder{" +
+                "kundeid=" + kundeid +
+                ", navn='" + navn + '\'' +
+                ", epost='" + epost + '\'' +
+                ", telefon=" + telefon +
+                '}';
+    }
 }
