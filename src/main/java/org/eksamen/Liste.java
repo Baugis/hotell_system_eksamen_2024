@@ -55,8 +55,6 @@ public class Liste {
     }
     // Legg til
     public void leggTilListe(ArrayList<String> tempListe, String tabellNavn) {
-        // Finne ut hvilket objekt basert på tabellNavn
-        System.out.println(tempListe);
 
         // Rom objekt som legges i Rom liste
         if (tabellNavn.equalsIgnoreCase("tblrom")) {

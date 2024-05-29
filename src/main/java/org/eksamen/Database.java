@@ -30,7 +30,6 @@ public class Database {
                     String columnValue = resultSet.getString(i);
                     tempListe.add(columnValue);
                 }
-                System.out.println();
             }
         } catch (SQLException e) {
             e.printStackTrace();
