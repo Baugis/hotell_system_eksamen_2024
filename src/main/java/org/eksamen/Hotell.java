@@ -42,7 +42,7 @@ public class Hotell {
         String telefon = skanner.nextLine();
 
         // Hvis telefonnummer finnes så ikke legg til:
-        if (liste.getKundeListe(telefon)) {
+        /*if (liste.getKundeListe(telefon)) {
             System.out.println("hællæ du eksisterer allerede");
         } else {
             // Genererer kundeID
@@ -53,7 +53,7 @@ public class Hotell {
             liste.getKundeListe().add(kunde);
 
             liste.printKundeListe();
-        }
+        }*/
 
         System.out.println("Velkommen til oss, " + navn + "!");
     }
@@ -177,9 +177,15 @@ public class Hotell {
         int nyRomId = liste.getRomListe().size() + 1;
         Rom rom = new Rom(nyRomId, romNummer, romType, pris);
 
+        rom.setRomid(nyRomId);
+        rom.setRomnummer(romNummer);
+        rom.setRomtype(romType);
+        rom.setPris(pris);
+
         liste.getRomListe().add(rom);
 
         System.out.println("Rommet med romid " + nyRomId + " er lagt til");
+
     }
 
     // Funksjonen for å slette rom er kodet av kandidatnummer 7041
@@ -191,17 +197,17 @@ public class Hotell {
         if (rom != null){
             liste.getRomListe().remove(rom);
             return true;
-        }
-        else{
+        } else{
             String ikkeFunnet = "Rommet finnes ikke.";
         }
         return false;
+
+
     }
 
     public void alleRom(){
         for (Rom rom : liste.getRomListe()){
             System.out.println(rom.getRomid() + ", " + rom.getRomnummer() + ", " + rom.getRomtype() + ", " + rom.getPris());
-            break;
         }
 
 
