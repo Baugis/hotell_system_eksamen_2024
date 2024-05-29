@@ -14,8 +14,6 @@ public class Liste {
     private ArrayList<Innsjekkinger> innsjekkingerListe = new ArrayList<>();
     private ArrayList<Avbestillinger> avbestillingerListe = new ArrayList<>();
     private ArrayList<Kunder> kundeListe = new ArrayList<>();
-    private ArrayList<Innsjekkinger> innsjekkingListe = new ArrayList<>();
-    private ArrayList<Avbestillinger> avbestillingListe = new ArrayList<>();
     private Database database;
 
     // Getter for hver liste
