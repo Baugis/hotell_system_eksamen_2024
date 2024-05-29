@@ -1,14 +1,13 @@
 package org.eksamen;
 
-import org.eksamen.Entity.Innsjekkinger;
-import org.eksamen.Entity.Rom;
-import org.eksamen.Entity.Kunder;
-import org.eksamen.Entity.Utsjekkinger;
+import org.eksamen.Entity.*;
 import org.eksamen.Liste;
+import org.w3c.dom.ls.LSOutput;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Hotell {
@@ -42,16 +41,19 @@ public class Hotell {
 
         String telefon = skanner.nextLine();
 
-        // Genererer kundeID
-        // Husk å legg til genrerererNyKundeId i kunder klassen så den returnerer
-        // en unik kundeId basert på tidlgiere kunder. telle + 1
-        int nyKundeId = liste.getKundeListe().size() + 1;
+        // Hvis telefonnummer finnes så ikke legg til:
+        if (liste.getKundeListe(telefon)) {
+            System.out.println("hællæ du eksisterer allerede");
+        } else {
+            // Genererer kundeID
+            int nyKundeId = liste.getKundeListe().size() + 1;
 
-        Kunder kunde = new Kunder(nyKundeId, navn, epost, telefon);
+            Kunder kunde = new Kunder(nyKundeId, navn, epost, telefon);
 
-        liste.getKundeListe().add(kunde);
+            liste.getKundeListe().add(kunde);
 
-        liste.printKundeListe();
+            liste.printKundeListe();
+        }
 
         System.out.println("Velkommen til oss, " + navn + "!");
     }
@@ -88,15 +90,46 @@ public class Hotell {
     // Funksjon for avbestilling av rom. Funksjonen er laget av kandidatnummer 7035
     // Funksjonen er testet og godkjent av kandidatnummer ...
     public void avbestilleRom() {
-        System.out.println("Avbestille rom");
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Oppgi kundeid");
+        Integer kundeId = scanner.nextInt();
+
+        System.out.println("Oppgi reservasjonid:");
+        Integer reservasjonId = scanner.nextInt();
+
+        ArrayList<Reservasjoner> reservasjonListe = liste.getReservasjonerListe();
+
+        // Loop through the reservations list
+        for (Reservasjoner reservasjon : reservasjonListe) {
+            boolean found = false;
+            if (kundeId == reservasjon.getKundeid() && reservasjonId == reservasjon.getReservasjonid()) {
+                if (!Objects.equals(reservasjon.getStatus(), "avbestilt")) {
+                    // Endrer status fra "Bekreftet" til "Avbestilt" på reservasjon
+                    reservasjon.setStatus("avbestilt");
+
+                    // Legger til rad i avbestillingtabbelen med info om avbestilling
+                    int nyAvbestillingid = liste.getAvbestillingerListe().size() + 1;
+                    String avbestillingDato = String.valueOf(LocalDateTime.now());
+                    Avbestillinger avbestillinger = new Avbestillinger(nyAvbestillingid, reservasjonId, avbestillingDato);
+
+                    liste.getAvbestillingerListe().add(avbestillinger);
+
+                    System.out.println("Rom allerede avbestilt");
+                    return;
+                } else {
+                    System.out.println("Rom allerede avbestilt");
+                    return;
+                }
+            }
+        }
     }
 
     // MENYVALG RESEPSJON
 
     // Funksjon for innsjekking av kunde. Funksjonen er laget av kandidatnummer 7001
     // Funksjonen er testet og godkjent av kandidatnummer ..
-
-    public void innsjekking () {
+    public void innsjekking() {
         Scanner skanner = new Scanner(System.in);
         System.out.println("Oppgi reservasjonsid:");
         String reservasjonsid = skanner.nextLine();
@@ -118,7 +151,7 @@ public class Hotell {
 
     // Funksjon for å utsjekking av gjest. Funksjonen er laget av kandidatnummer 7001
     // Funksjonen er testet og godkjent av kandidatnummer ..
-    public void utsjekking () {
+    public void utsjekking() {
         Scanner skanner = new Scanner(System.in);
         System.out.println("Oppgi reservasjonsid:");
         String reservasjonsid = skanner.nextLine();
@@ -188,3 +221,4 @@ public class Hotell {
 
 
 }
+

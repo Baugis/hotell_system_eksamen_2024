@@ -2,61 +2,35 @@ package org.eksamen;
 
 import org.eksamen.Entity.*;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.sql.PreparedStatement;
 
 // Database er opprettet og kodet av kandidatnummer 7017 og 7035
 // Koblingene er testet og godkjent av kandidatnummer 7001 og 7041
 public class Database {
+    private static final String URL = "jdbc:postgresql://localhost:5432/hotell";
+    private static final String USER = "postgres";
+    private static final String PASSWORD = "postgres";
 
-    // Hent data fra tabeller i database
     public ArrayList<String> getData(String tabellNavn) {
-
-        // Koble til database
-        String url = "jdbc:postgresql://localhost:5432/hotell";
-        String user = "postgres";
-        String password = "postgres";
         ArrayList<String> tempListe = new ArrayList<>();
 
-        // Koble til
-        try (Connection connection = DriverManager.getConnection(url, user, password)) {
+        String query = "SELECT * FROM " + tabellNavn;
+        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(query)) {
 
-            // Lage statement
-            try (Statement statement = connection.createStatement()) {
+            ResultSetMetaData rsmd = resultSet.getMetaData();
+            int columnCount = rsmd.getColumnCount();
 
-                // SQL query
-                String query = "SELECT * FROM " + tabellNavn;
-                ResultSet resultSet = statement.executeQuery(query);
-
-                // Hente metadata, telle kolonner
-                ResultSetMetaData rsmd = resultSet.getMetaData();
-                int columnCount = rsmd.getColumnCount();
-
-                // Gå gjennom hver rad og kolonne
-                while (resultSet.next()) {
-
-                    for (int i = 1; i <= columnCount; i++) {
-                        String columnName = rsmd.getColumnName(i);
-                        String columnValue = resultSet.getString(i);
-                        System.out.print(columnName + ": " + columnValue + "\t");
-                        tempListe.add(columnValue);
-                    }
-
-                    // Legge til data fra tabell i ordliste med bruk av ArrayList og type?
-                    System.out.println();
+            while (resultSet.next()) {
+                for (int i = 1; i <= columnCount; i++) {
+                    String columnValue = resultSet.getString(i);
+                    tempListe.add(columnValue);
                 }
-
-                // Avslutte
-                resultSet.close();
-
-            } catch (SQLException e) {
-                e.printStackTrace();
+                System.out.println();
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -64,155 +38,92 @@ public class Database {
         return tempListe;
     }
 
-    // Send data to table in the database
     public void sendData(String query, ArrayList<?> data) {
-        // Connect to the database
-        String url = "jdbc:postgresql://localhost:5432/hotell";
-        String user = "postgres";
-        String password = "postgres";
+        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+             PreparedStatement statement = connection.prepareStatement(query)) {
 
-        try (Connection connection = DriverManager.getConnection(url, user, password)) {
-            // Prepare the SQL statement
-            try (PreparedStatement statement = connection.prepareStatement(query)) {
-                // Set the parameters for the prepared statement based on the type of ArrayList
-                for (Object value : data) {
-                    if (value instanceof Rom) {
-                        Rom rom = (Rom) value;
-                        if (!romExistsInDatabase(rom, connection)) {
-                            statement.setInt(1, rom.getRomid());
-                            statement.setInt(2, rom.getRomnummer());
-                            statement.setString(3, rom.getRomtype());
-                            statement.setFloat(4, rom.getPris());
-                            statement.addBatch();
-                        }
-                    } else if (value instanceof Kunder) {
-                        Kunder kunde = (Kunder) value;
-                        if (!kundeExistsInDatabase(kunde, connection)) {
-                            statement.setInt(1, kunde.getKundeid());
-                            statement.setString(2, kunde.getNavn());
-                            statement.setString(3, kunde.getEpost());
-                            statement.setString(4, kunde.getTelefon());
-                            statement.addBatch();
-                        }
-                    } else if (value instanceof Avbestillinger) {
-                        Avbestillinger avbestillinger = (Avbestillinger) value;
-                        if (!avbestillingExistsInDatabase(avbestillinger, connection)) {
-                            statement.setInt(1, avbestillinger.getAvbestillingsid());
-                            statement.setInt(2, avbestillinger.getReservasjonsid());
-                            statement.setString(3, avbestillinger.getAvbestillingdato());
-                        }
-                    } else if (value instanceof Innsjekkinger) {
-                        Innsjekkinger innsjekkinger = (Innsjekkinger) value;
-                        if (!innsjekkingExistsInDatabase(innsjekkinger, connection)) {
-                            statement.setInt(1, innsjekkinger.getInnsjekkingsid());
-                            statement.setInt(2, innsjekkinger.getReservasjonsid());
-                            statement.setString(1, innsjekkinger.getInnsjekkingdato());
-                        }
-                    } else if (value instanceof Reservasjoner) {
-                        Reservasjoner reservasjoner = (Reservasjoner) value;
-                        if (!reservasjonExistsInDatabase(reservasjoner, connection)) {
-                            statement.setInt(1, reservasjoner.getReservasjonid());
-                            statement.setInt(2, reservasjoner.getKundeid());
-                            statement.setInt(3, reservasjoner.getRomid());
-                            statement.setString(4, reservasjoner.getStartdato());
-                            statement.setString(5, reservasjoner.getSluttdato());
-                            statement.setString(6, reservasjoner.getStatus());
-                        }
-                    } else if (value instanceof Utsjekkinger) {
-                        Utsjekkinger utsjekkinger = (Utsjekkinger) value;
-                        if (!utsjekkingExistsInDatabase(utsjekkinger, connection)) {
-                            statement.setInt(1, utsjekkinger.getUtsjekkingid());
-                            statement.setInt(2, utsjekkinger.getReservasjonid());
-                            statement.setString(3, utsjekkinger.getUtsjekkingdato());
-                        }
+            for (Object value : data) {
+                if (value instanceof Rom) {
+                    Rom rom = (Rom) value;
+                    if (!entityExistsInDatabase("tblrom", "romid", rom.getRomid(), connection)) {
+                        statement.setInt(1, rom.getRomid());
+                        statement.setInt(2, rom.getRomnummer());
+                        statement.setString(3, rom.getRomtype());
+                        statement.setFloat(4, rom.getPris());
+                        statement.addBatch();
+                    }
+                } else if (value instanceof Kunder) {
+                    Kunder kunde = (Kunder) value;
+                    if (!entityExistsInDatabase("tblkunde", "kundeid", kunde.getKundeid(), connection)) {
+                        statement.setInt(1, kunde.getKundeid());
+                        statement.setString(2, kunde.getNavn());
+                        statement.setString(3, kunde.getEpost());
+                        statement.setString(4, kunde.getTelefon());
+                        statement.addBatch();
+                    }
+                } else if (value instanceof Avbestillinger) {
+                    Avbestillinger avbestilling = (Avbestillinger) value;
+                    if (!entityExistsInDatabase("tblavbestilling", "avbestillingid", avbestilling.getAvbestillingsid(), connection)) {
+                        statement.setInt(1, avbestilling.getAvbestillingsid());
+                        statement.setInt(2, avbestilling.getReservasjonsid());
+
+                        LocalDateTime dateTime = LocalDateTime.parse(avbestilling.getAvbestillingdato(), DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"); // Define a formatter without milliseconds
+                        String formattedDateTime = dateTime.format(formatter); // Format the LocalDateTime without milliseconds
+                        Timestamp timestamp = Timestamp.valueOf(formattedDateTime);
+                        statement.setTimestamp(3, timestamp);
+
+                        statement.addBatch();
+                    }
+                } else if (value instanceof Innsjekkinger) {
+                    Innsjekkinger innsjekking = (Innsjekkinger) value;
+                    if (!entityExistsInDatabase("tblinnsjekking", "innsjekkingid", innsjekking.getInnsjekkingsid(), connection)) {
+                        statement.setInt(1, innsjekking.getInnsjekkingsid());
+                        statement.setInt(2, innsjekking.getReservasjonsid());
+                        statement.setDate(3, Date.valueOf(innsjekking.getInnsjekkingdato()));
+                        statement.addBatch();
+                    }
+                } else if (value instanceof Reservasjoner) {
+                    Reservasjoner reservasjon = (Reservasjoner) value;
+                    upsertReservasjon(connection, reservasjon);
+                } else if (value instanceof Utsjekkinger) {
+                    Utsjekkinger utsjekking = (Utsjekkinger) value;
+                    if (!entityExistsInDatabase("tblutsjekking", "utsjekkingid", utsjekking.getUtsjekkingid(), connection)) {
+                        statement.setInt(1, utsjekking.getUtsjekkingid());
+                        statement.setInt(2, utsjekking.getReservasjonid());
+                        statement.setDate(3, Date.valueOf(utsjekking.getUtsjekkingdato()));
+                        statement.addBatch();
                     }
                 }
-                // Execute the batch update
-                statement.executeBatch();
-            } catch (SQLException e) {
-                e.printStackTrace();
             }
+            statement.executeBatch();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    // Check if a Rom already exists in the database based on unique identifier (romid)
-    private boolean romExistsInDatabase(Rom rom, Connection connection) throws SQLException {
-        String query = "SELECT COUNT(*) FROM tblrom WHERE romid = ?";
+    private boolean entityExistsInDatabase(String tableName, String idColumn, int id, Connection connection) throws SQLException {
+        String query = "SELECT COUNT(*) FROM " + tableName + " WHERE " + idColumn + " = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setInt(1, rom.getRomid());
+            statement.setInt(1, id);
             try (ResultSet resultSet = statement.executeQuery()) {
                 resultSet.next();
-                int count = resultSet.getInt(1);
-                return count > 0; // Returns true if count > 0 (Rom exists), false otherwise
+                return resultSet.getInt(1) > 0;
             }
         }
     }
 
-    // Check if a Kunde already exists in the database based on unique identifier (kundeid)
-    private boolean kundeExistsInDatabase(Kunder kunde, Connection connection) throws SQLException {
-        String query = "SELECT COUNT(*) FROM tblkunde WHERE kundeid = ?";
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setInt(1, kunde.getKundeid());
-            try (ResultSet resultSet = statement.executeQuery()) {
-                resultSet.next();
-                int count = resultSet.getInt(1);
-                return count > 0; // Returns true if count > 0 (Rom exists), false otherwise
-            }
-        }
-    }
-
-    // Check if a Avbestillinger already exists in the database based on unique identifier (avbestillingid)
-    private boolean avbestillingExistsInDatabase(Avbestillinger avbestilling, Connection connection) throws SQLException {
-        String query = "SELECT COUNT(*) FROM tblavbestilling WHERE avbestillingid = ?";
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setInt(1, avbestilling.getAvbestillingsid());
-            try (ResultSet resultSet = statement.executeQuery()) {
-                resultSet.next();
-                int count = resultSet.getInt(1);
-                return count > 0; // Returns true if count > 0 (Rom exists), false otherwise
-            }
-        }
-    }
-
-    // Check if a Innsjekkinger already exists in the database based on unique identifier (innsjekingid)
-    private boolean innsjekkingExistsInDatabase(Innsjekkinger innsjekking, Connection connection) throws SQLException {
-        String query = "SELECT COUNT(*) FROM tblinnsjekking WHERE innsjekkingid = ?";
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setInt(1, innsjekking.getInnsjekkingsid());
-            try (ResultSet resultSet = statement.executeQuery()) {
-                resultSet.next();
-                int count = resultSet.getInt(1);
-                return count > 0; // Returns true if count > 0 (Rom exists), false otherwise
-            }
-        }
-    }
-
-    // Check if a Reservasjoner already exists in the database based on unique identifier (reservasjonid)
-    private boolean reservasjonExistsInDatabase(Reservasjoner reservasjon, Connection connection) throws SQLException {
-        String query = "SELECT COUNT(*) FROM tblreservasjon WHERE reservasjonid = ?";
+    private void upsertReservasjon(Connection connection, Reservasjoner reservasjon) throws SQLException {
+        String query = "INSERT INTO tblreservasjon (reservasjonid, kundeid, romid, startdato, sluttdato, status) VALUES (?, ?, ?, ?, ?, ?) " +
+                "ON CONFLICT (reservasjonid) DO UPDATE SET kundeid = EXCLUDED.kundeid, romid = EXCLUDED.romid, startdato = EXCLUDED.startdato, sluttdato = EXCLUDED.sluttdato, status = EXCLUDED.status";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, reservasjon.getReservasjonid());
-            try (ResultSet resultSet = statement.executeQuery()) {
-                resultSet.next();
-                int count = resultSet.getInt(1);
-                return count > 0; // Returns true if count > 0 (Rom exists), false otherwise
-            }
+            statement.setInt(2, reservasjon.getKundeid());
+            statement.setInt(3, reservasjon.getRomid());
+            statement.setDate(4, Date.valueOf(reservasjon.getStartdato()));
+            statement.setDate(5, Date.valueOf(reservasjon.getSluttdato()));
+            statement.setString(6, reservasjon.getStatus());
+            statement.executeUpdate();
         }
     }
-
-    // Check if a Utsjekkinger already exists in the database based on unique identifier (utsjekkingid)
-    private boolean utsjekkingExistsInDatabase(Utsjekkinger utsjekking, Connection connection) throws SQLException {
-        String query = "SELECT COUNT(*) FROM tblutsjekking WHERE utsjekkingid = ?";
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setInt(1, utsjekking.getReservasjonid());
-            try (ResultSet resultSet = statement.executeQuery()) {
-                resultSet.next();
-                int count = resultSet.getInt(1);
-                return count > 0; // Returns true if count > 0 (Rom exists), false otherwise
-            }
-        }
-    }
-
 }

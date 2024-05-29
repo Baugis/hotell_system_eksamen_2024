@@ -120,7 +120,7 @@ public class Liste {
 
         // Avbestilling objekt som legges i Avbestilling liste
         if (tabellNavn.equalsIgnoreCase("tblavbestilling")) {
-            for (int i = 0; i < tempListe.size(); i += 4) {
+            for (int i = 0; i < tempListe.size(); i += 3) {
                 int avbestillingstid = Integer.parseInt(tempListe.get(i));
                 int reservasjonsid = Integer.parseInt(tempListe.get(i + 1));
                 String avbestillingdato = tempListe.get(i + 2);
