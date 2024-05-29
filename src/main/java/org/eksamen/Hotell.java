@@ -101,6 +101,9 @@ public class Hotell {
         System.out.println("Oppgi reservasjonsid:");
         String reservasjonsid = skanner.nextLine();
 
+        // Må sjekke om reservasjons id finnes i reservasjonslisten først og deretter videre kode.
+        // Samme i utsjekking
+
         int reservasjonsidInt = Integer.parseInt(reservasjonsid);
 
         int nyInnsjekkingsId = liste.getInnsjekkingerListe().size() + 1;
