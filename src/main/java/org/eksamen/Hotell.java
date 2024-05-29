@@ -54,7 +54,7 @@ public class Hotell {
     }
 
     // Oppretter en søkealgoritme hvor bruker kan søke etter rom basert på ulike krav
-    // Funksjonen er laget av kandidatnummer 7001 og kandidatnummer 7017
+    // Funksjonen er laget av kandidatnummer 7017
     // Funksjonen er testet og godkjent av kandidatnummer ...
 
     public void sokeRom() {
@@ -76,13 +76,13 @@ public class Hotell {
         String romtype = skanner.nextLine();
     }
 
-    // Funksjon for reservasjon av rom. Funksjonen er laget av kandidatnummer ....
+    // Funksjon for reservasjon av rom. Funksjonen er laget av kandidatnummer 7017
     // Funksjonen er testet og godkjent av kandidatnummer ...
     public void reservasjon() {
         System.out.println("Reservasjon");
     }
 
-    // Funksjon for avbestilling av rom. Funksjonen er laget av kandidatnummer ....
+    // Funksjon for avbestilling av rom. Funksjonen er laget av kandidatnummer 7035
     // Funksjonen er testet og godkjent av kandidatnummer ...
     public void avbestilleRom() {
         System.out.println("Avbestille rom");
