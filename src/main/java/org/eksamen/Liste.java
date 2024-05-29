@@ -2,7 +2,6 @@ package org.eksamen;
 
 import org.eksamen.Entity.*;
 
-import java.lang.reflect.Array;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -19,18 +18,14 @@ public class Liste {
     private ArrayList<Avbestillinger> avbestillingListe = new ArrayList<>();
     private Database database;
 
-
-    public ArrayList<Rom> getRomListe() {
-        return romListe;
-    }
-
+    // Getter for hver liste
+    public ArrayList<Rom> getRomListe() {return romListe;}
     public ArrayList<Kunder> getKundeListe() { return kundeListe;}
-
-    public ArrayList<Innsjekkinger> getInnsjekkingListe() { return innsjekkingListe;}
-
     public ArrayList<Utsjekkinger> getUtsjekkingListe() { return utsjekkingListe;}
+    public ArrayList<Innsjekkinger> getInnsjekkinngerListe() { return innsjekkinngerListe;}
+    public ArrayList<Avbestillinger> getAvbestillingerListe() { return avbestillingerListe;}
+    public ArrayList<Reservasjoner> getReservasjonerListe() { return reservasjonerListe;}
 
-    // Opprette Data objekt for å
     public Liste(Database database) {
         this.database = database;
 
