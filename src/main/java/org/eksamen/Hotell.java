@@ -1,6 +1,8 @@
 package org.eksamen;
 
 import org.eksamen.Entity.Rom;
+import org.eksamen.Entity.Kunder;
+import org.eksamen.Liste;
 
 import java.util.Scanner;
 
@@ -37,7 +39,12 @@ public class Hotell {
         // Genererer kundeID
         // Husk å legg til genrerererNyKundeId i kunder klassen så den returnerer
         // en unik kundeId basert på tidlgiere kunder. telle + 1
-        int nyKundeId = Kunder.generererNyKundeId();
+        int nyKundeId = Kunder.genererNyKundeId();
+
+        Kunder kunde = new Kunder(nyKundeId, navn, epost, telefon);
+
+        // USIKKER PÅ HVILKEN AV DISSE METODENE JEG SKAL BRUKE FOR Å LEGGE TIL !!
+        liste.getKundeListe().add(kunde);
 
         Kunder.leggtilKunde(nyKundeId, navn, epost, telefon);
     }

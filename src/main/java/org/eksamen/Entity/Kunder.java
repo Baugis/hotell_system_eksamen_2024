@@ -1,5 +1,6 @@
 package org.eksamen.Entity;
 import org.eksamen.Hotell;
+import org.eksamen.Liste;
 
 public class Kunder {
 
@@ -46,7 +47,7 @@ public class Kunder {
         kundeliste.add(kunde);
     }
 
-    public int genererNyKundeId() {
+    public static int genererNyKundeId() {
         return kundeliste.size() + 1;
     }
 }
