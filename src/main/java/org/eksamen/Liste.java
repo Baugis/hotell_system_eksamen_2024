@@ -70,14 +70,30 @@ public class Liste {
             }
         }
 
-        // Utskrift Romliste for test
-        printRomListe();
-
         // Utsjekking objekt som legges i Utsjekking liste
-
+        if (tabellNavn.equalsIgnoreCase("tblutsjekking")) {
+            for (int i = 0; i < tempListe.size(); i += 3) {
+                int utsjekkingid = Integer.parseInt(tempListe.get(i));
+                int reservasjonid = Integer.parseInt(tempListe.get(i + 1));
+                LocalDateTime utsjekkingdato = LocalDateTime.parse(tempListe.get(i + 2));
+                Utsjekkinger utsjekking = new Utsjekkinger(utsjekkingid, reservasjonid, utsjekkingdato);
+                utsjekkingListe.add(utsjekking);
+            }
+        }
 
         // Reservasjon objekt som legges i Reverasjon liste
-
+        if (tabellNavn.equalsIgnoreCase("tblutsjekking")) {
+            for (int i = 0; i < tempListe.size(); i += 6) {
+                int reservasjonid = Integer.parseInt(tempListe.get(i));
+                int kundeid = Integer.parseInt(tempListe.get(i + 1));
+                int romid = Integer.parseInt(tempListe.get(i + 2));
+                LocalDateTime startdato = LocalDateTime.parse(tempListe.get(i + 3));
+                LocalDateTime sluttdato = LocalDateTime.parse(tempListe.get(i + 4));
+                String status = tempListe.get(i + 5);
+                Reservasjoner reservasjon = new Reservasjoner(reservasjonid, kundeid, romid, startdato, sluttdato, status);
+                reservasjonerListe.add(reservasjon);
+            }
+        }
 
         // Kunde objekt som legges i Kunde liste
         if (tabellNavn.equalsIgnoreCase("tblkunde")) {
@@ -93,7 +109,7 @@ public class Liste {
 
         // Innsjekking objekt som legges i Innsjekking liste
         if (tabellNavn.equalsIgnoreCase("tblinnsjekking")) {
-            for (int i = 0; i < tempListe.size(); i += 4) {
+            for (int i = 0; i < tempListe.size(); i += 3) {
                 int innsjekkingsid = Integer.parseInt(tempListe.get(i));
                 int reservasjonsid = Integer.parseInt(tempListe.get(i + 1));
                 LocalDateTime innsjekkingdato = LocalDateTime.parse(tempListe.get(i + 2));
