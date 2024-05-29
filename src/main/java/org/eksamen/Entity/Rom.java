@@ -17,19 +17,19 @@ public class Rom {
         this.pris = pris;
     }
 
-    private int getRomid(){
+    public int getRomid(){
         return romid;
     }
 
-    private int getRomnummer(){
+    public int getRomnummer(){
         return romnummer;
     }
 
-    private String getRomtype(){
+    public String getRomtype(){
         return romtype;
     }
 
-    private float getPris(){
+    public float getPris(){
         return pris;
     }
 

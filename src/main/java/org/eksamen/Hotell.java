@@ -88,8 +88,7 @@ public class Hotell {
     // Bruker konstruktør for å enkelt legge til nytt rom
 
 
-
-    public void leggTilRom(int romNummer, String romType, float pris){
+    public void leggTilRom(int romNummer, String romType, float pris) {
         int nyRomId = liste.getRomListe().size() + 1;
         Rom rom = new Rom(nyRomId, romNummer, romType, pris);
 
@@ -98,4 +97,18 @@ public class Hotell {
 
     // Slette rom
     // Det skal være mulig å slette et rom
+
+    public void slettRom(int romid, int romnummer, String romtype, float pris) {
+
+    }
+
+    public Rom finnRom(int romid) {
+        for (Rom rom : liste.getRomListe()) {
+            if (rom.getRomid() == romid) {
+                return rom;
+            }
+
+        }
+        return null;
+    }
 }
