@@ -3,6 +3,7 @@ package org.eksamen;
 import org.eksamen.Entity.Innsjekkinger;
 import org.eksamen.Entity.Rom;
 import org.eksamen.Entity.Kunder;
+import org.eksamen.Entity.Utsjekkinger;
 import org.eksamen.Liste;
 
 import java.time.LocalDateTime;
@@ -52,7 +53,6 @@ public class Hotell {
         liste.getKundeListe().add(kunde);
     }
 
-
     // Søkealgoritme
     // Bruker skal søke på rom etter tilgjengelige rom, pris og romtype
     // Rommet kan ikke være reservert i tidsperioden bruker søker etter rommet
@@ -94,6 +94,21 @@ public class Hotell {
     // Resepsjonen skal kunne sjekke ut en kunde ved hjelp av reservasjonsid
     // Får en utsjekkingsdato time
 
+    public void utsjekking () {
+        Scanner skanner = new Scanner(System.in);
+        System.out.println("Oppgi reservasjonsid:");
+        String reservasjonsid = skanner.nextLine();
+
+        int reservasjonsidInt = Integer.parseInt(reservasjonsid);
+
+        int nyUtsjekkingsId = liste.getUtsjekkingListe().size() + 1;
+
+        LocalDateTime utsjekkingdato = LocalDateTime.now();
+
+        Utsjekkinger utsjekking = new Utsjekkinger(nyUtsjekkingsId, reservasjonsidInt, utsjekkingdato);
+        liste.getUtsjekkingListe().add(utsjekking);
+    }
+
 
     // ADMINISTRASJON
     // Legge til rom
@@ -101,7 +116,6 @@ public class Hotell {
     // Romid, romnummer, romtype, pris
     // Påvirker romtabell / liste
     // Bruker konstruktør for å enkelt legge til nytt rom
-
 
 
     public void leggTilRom(int romId, int romNummer, String romType, float pris){

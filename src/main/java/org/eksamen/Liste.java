@@ -2,6 +2,7 @@ package org.eksamen;
 
 import org.eksamen.Entity.*;
 
+import java.lang.reflect.Array;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -26,6 +27,8 @@ public class Liste {
     public ArrayList<Kunder> getKundeListe() { return kundeListe;}
 
     public ArrayList<Innsjekkinger> getInnsjekkingListe() { return innsjekkingListe;}
+
+    public ArrayList<Utsjekkinger> getUtsjekkingListe() { return utsjekkingListe;}
 
     // Opprette Data objekt for å
     public Liste(Database database) {
