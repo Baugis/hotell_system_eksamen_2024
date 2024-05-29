@@ -123,7 +123,6 @@ public class Main {
             System.out.println("Vennligst velg: ");
             System.out.println("----------------------------------------");
 
-
             try {
                 int subValg = Integer.parseInt(skanner.nextLine());
                 switch (subValg) {
@@ -141,11 +140,11 @@ public class Main {
                         String romType = scanner.nextLine();
 
                         System.out.println("Oppgi pris: ");
-                        String pris = scanner.nextLine();
+                        float pris = Float.parseFloat(scanner.nextLine());
 
-                        hotell.leggTilRom(romNummer, romType, Float.parseFloat(pris));
+                        hotell.leggTilRom(romNummer, romType, Float.parseFloat(String.valueOf(pris)));
 
-                        scanner.close();
+                        System.out.println("");
                         break;
                     case 2:
                         // Håndter slette rom
@@ -154,12 +153,8 @@ public class Main {
 
                         System.out.println("Du har valgt å slette et rom");
 
-                        //hotell.leggTilRom(101, "enkeltrom", 1200);
-                        //hotell.leggTilRom(202, "suite", 1000);
-
                         Scanner scanner2 = new Scanner(System.in);
                         System.out.println("Dette er alle eksisterende rom.");
-
 
                         hotell.alleRom();
 
@@ -169,26 +164,18 @@ public class Main {
 
                         Rom rom = hotell.finnRom(romid);
 
-                        System.out.println(rom.getRomid()+rom.getRomnummer()+rom.getRomtype()+rom.getPris());
+                        System.out.println("Dette er rommet du sletter nå: " + rom.getRomid() +", "+ rom.getRomnummer() +", "+ rom.getRomtype() +", "+ rom.getPris());
 
                         boolean romSlettet = hotell.slettRom(romid);
 
-                        if (romSlettet){
-                            System.out.println("Rom funnet: " + rom.getRomid() + rom.getRomnummer() + rom.getRomtype() + rom.getPris());
+                        if (romSlettet == true){
+                            System.out.println("Rom slettet: " + rom.getRomid() +", "+ rom.getRomnummer() +", "+ rom.getRomtype() +", " + rom.getPris());
+
                         } else{
                             System.out.println("Rom med Id: " + romid + " finnes ikke.");
                         }
 
-
-                        //her
-
-
-
-
-
-
-                        System.out.println("Hvilket rom ønsker du å slette?");
-
+                        System.out.println("");
 
 
                         break;
@@ -262,6 +249,7 @@ public class Main {
             System.out.println("1. Søk etter rom");
             System.out.println("2. Booke rom");
             System.out.println("3. Opprett kundebruker");
+            System.out.println("4. Avbestill reservasjon");
             System.out.println("9. Tilbake til hovedmenyen");
             System.out.println("Vennligst velg: ");
             System.out.println("----------------------------------------");
