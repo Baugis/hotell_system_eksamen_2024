@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class Hotell {
-
     private Database database;
     private Liste liste;
 
@@ -61,6 +60,11 @@ public class Hotell {
     // Rommet kan ikke være reservert i tidsperioden bruker søker etter rommet
     // Bruker skal kunne oppgi en fra-til pris
     // Bruker skal kunne oppgi ønsket romtype
+
+    // Bruker skal først skrive inn til-fra dato
+    // Bruker skal så skrive inn til-fra pris
+    // Bruker skal så skrive inn ønsket romtype
+    // Det skal deretter printes ut de tilgjengelige rommene
 
     public void sokeRom() {
         System.out.println("Her");
