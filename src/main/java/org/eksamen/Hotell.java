@@ -102,7 +102,6 @@ public class Hotell {
                 if (rom.getRomid() == reservasjon.getRomid() &&
                         startDatoLocal.isBefore(reservasjonSluttDato) &&
                         sluttDatoLocal.isAfter(reservasjonStartDato)) {
-                    System.out.println("yo");
                     romIterator.remove();
                 }
             }
@@ -115,21 +114,25 @@ public class Hotell {
             for (Rom rom : tilgjengeligeRom) {
                 System.out.println(rom);
             }
+
+            // Reservasjon basert på tilgjengelige rom
+            System.out.println("Hvilket rom ønsker du? ");
+            String bookeRom = skanner.nextLine();
+
+            System.out.println("Kundenummeret ditt: ");
+            String kundeid = skanner.nextLine();
+
+            int reservasjonid = liste.getReservasjonerListe().size() + 1;
+            int romid = Integer.parseInt(bookeRom);
+            String status = "bestilt";
+
+            Reservasjoner reservasjon = new Reservasjoner(reservasjonid, Integer.parseInt(kundeid), romid, startDato, sluttDato, status);
+            liste.getReservasjonerListe().add(reservasjon);
+
+            System.out.println("Reservasjonen er lagt til");
         }
 
-        // Reservasjon basert på tilgjengelige rom
-        System.out.println("Hvilket rom ønsker du");
-        String bookeRom = skanner.nextLine();
 
-        System.out.println("Kundenummer");
-        String kundeid = skanner.nextLine();
-
-        int reservasjonid = liste.getReservasjonerListe().size() + 1;
-        int romid = Integer.parseInt(bookeRom);
-        String status = "Bestilt";
-
-        Reservasjoner reservasjon = new Reservasjoner(reservasjonid, Integer.parseInt(kundeid), romid, startDato, sluttDato, status);
-        liste.getReservasjonerListe().add(reservasjon);
     }
 
     // Funksjon for reservasjon av rom. Funksjonen er laget av kandidatnummer 7017

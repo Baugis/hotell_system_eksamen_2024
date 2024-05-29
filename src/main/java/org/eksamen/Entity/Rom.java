@@ -51,12 +51,9 @@ public class Rom {
 
     @Override
     public String toString() {
-        return "Rom{" +
-                "romid=" + romid +
-                ", romnummer='" + romnummer + '\'' +
-                ", romtype='" + romtype + '\'' +
-                ", pris=" + pris +
-                '}';
+        return "Rom nummer: " + romid +
+                ", Type: " + romtype + '\'' +
+                ", Pris: " + pris;
     }
 }
 

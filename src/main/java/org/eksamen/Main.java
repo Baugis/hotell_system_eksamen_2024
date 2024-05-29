@@ -252,10 +252,9 @@ public class Main {
         while (fortsettISubmeny) {
             System.out.println("Kunde");
             System.out.println("Du har nå tre valg: ");
-            System.out.println("1. Søk etter rom");
-            System.out.println("2. Booke rom");
-            System.out.println("3. Opprett kundebruker");
-            System.out.println("4. Avbestill reservasjon");
+            System.out.println("1. Søk etter rom og reserver");
+            System.out.println("2. Opprett kundebruker");
+            System.out.println("3. Avbestill reservasjon");
             System.out.println("9. Tilbake til hovedmenyen");
             System.out.println("Vennligst velg: ");
             System.out.println("----------------------------------------");
@@ -265,21 +264,16 @@ public class Main {
                 switch (subValg) {
                     case 1:
                         // Håndter se tilgjengelige rom
-                        System.out.println("Søk etter rom");
+                        System.out.println("Søk etter rom og reservere");
                         System.out.println("----------------------------------------");
                         hotell.sokeRom();
                         break;
                     case 2:
-                        // Håndter booke rom
-                        System.out.println("Booke rom valgt.");
-                        System.out.println("----------------------------------------");
-                        break;
-                    case 3:
                         System.out.println("Legge til kundebruker er valgt");
                         System.out.println("----------------------------------------");
                         hotell.leggTilNyKunde();
                         break;
-                    case 4:
+                    case 3:
                         System.out.println("Avbestille reservasjon er valgt");
                         System.out.println("----------------------------------------");
                         hotell.avbestilleRom();
