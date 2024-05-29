@@ -112,7 +112,7 @@ public class Liste {
                 int reservasjonsid = Integer.parseInt(tempListe.get(i + 1));
                 LocalDateTime innsjekkingdato = LocalDateTime.parse(tempListe.get(i + 2));
                 Innsjekkinger innsjekking = new Innsjekkinger(innsjekkingsid, reservasjonsid, innsjekkingdato);
-                innsjekkingListe.add(innsjekking);
+                innsjekkingerListe.add(innsjekking);
             }
         }
 
