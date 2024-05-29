@@ -41,19 +41,14 @@ public class Hotell {
 
         String telefon = skanner.nextLine();
 
-        // Hvis telefonnummer finnes så ikke legg til:
-        if (liste.getKundeListe(telefon)) {
-            System.out.println("hællæ du eksisterer allerede");
-        } else {
-            // Genererer kundeID
-            int nyKundeId = liste.getKundeListe().size() + 1;
+        // Genererer kundeID
+        int nyKundeId = liste.getKundeListe().size() + 1;
 
-            Kunder kunde = new Kunder(nyKundeId, navn, epost, telefon);
+        Kunder kunde = new Kunder(nyKundeId, navn, epost, telefon);
 
-            liste.getKundeListe().add(kunde);
+        liste.getKundeListe().add(kunde);
 
-            liste.printKundeListe();
-        }
+        liste.printKundeListe();
 
         System.out.println("Velkommen til oss, " + navn + "!");
     }
@@ -212,7 +207,6 @@ public class Hotell {
             if (rom != null && rom.getRomid() == romid) {
                 return rom;
             }
-
         }
         return null;
     }
@@ -221,4 +215,3 @@ public class Hotell {
 
 
 }
-
