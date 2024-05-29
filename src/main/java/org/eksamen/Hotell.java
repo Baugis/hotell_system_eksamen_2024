@@ -140,11 +140,27 @@ public class Hotell {
     // Funksjonen for å slette rom er kodet av kandidatnummer 7041
     // Funksjonen er testet og godkjent av kandidatnummer ...
 
-    public void slettRom(int romid, int romnummer, String romtype, float pris) {
+    public boolean slettRom(int romid) {
+        Rom rom = finnRom(romid);
 
+        if (rom != null){
+            liste.getRomListe().remove(rom);
+            return true;
+        }
+        else{
+            String ikkeFunnet = "Rommet finnes ikke.";
+        }
+        return false;
     }
 
+    public void alleRom(){
+        for (Rom rom : liste.getRomListe()){
+            System.out.println(rom.getRomid() + ", " + rom.getRomnummer() + ", " + rom.getRomtype() + ", " + rom.getPris());
+            break;
+        }
 
+
+    }
 
     public Rom finnRom(int romid) {
         for (Rom rom : liste.getRomListe()) {
@@ -155,4 +171,8 @@ public class Hotell {
         }
         return null;
     }
+
+
+
+
 }

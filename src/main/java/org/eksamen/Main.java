@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import org.eksamen.Entity.*;
+
+import org.eksamen.Entity.Rom;
 import org.eksamen.Hotell;
 
 // Selve menysystemet er laget av kandidatnummer 7001 og 7041
@@ -132,9 +134,6 @@ public class Main {
 
                         Scanner scanner = new Scanner(System.in);
 
-                        System.out.println("Oppgi romid: ");
-                        int romId = Integer.parseInt(scanner.nextLine());
-
                         System.out.println("Oppgi romnummer: ");
                         int romNummer = Integer.parseInt(scanner.nextLine());
 
@@ -146,11 +145,51 @@ public class Main {
 
                         hotell.leggTilRom(romNummer, romType, Float.parseFloat(pris));
 
+                        scanner.close();
                         break;
                     case 2:
                         // Håndter slette rom
                         System.out.println("Slette rom valgt.");
                         System.out.println("----------------------------------------");
+
+                        System.out.println("Du har valgt å slette et rom");
+
+                        //hotell.leggTilRom(101, "enkeltrom", 1200);
+                        //hotell.leggTilRom(202, "suite", 1000);
+
+                        Scanner scanner2 = new Scanner(System.in);
+                        System.out.println("Dette er alle eksisterende rom.");
+
+
+                        hotell.alleRom();
+
+                        //her
+                        System.out.println("Skriv inn id til rom du ønsker å slette: ");
+                        int romid = Integer.parseInt(scanner2.nextLine());
+
+                        Rom rom = hotell.finnRom(romid);
+
+                        System.out.println(rom.getRomid()+rom.getRomnummer()+rom.getRomtype()+rom.getPris());
+
+                        boolean romSlettet = hotell.slettRom(romid);
+
+                        if (romSlettet){
+                            System.out.println("Rom funnet: " + rom.getRomid() + rom.getRomnummer() + rom.getRomtype() + rom.getPris());
+                        } else{
+                            System.out.println("Rom med Id: " + romid + " finnes ikke.");
+                        }
+
+
+                        //her
+
+
+
+
+
+
+                        System.out.println("Hvilket rom ønsker du å slette?");
+
+
 
                         break;
                     case 9:
