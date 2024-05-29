@@ -140,4 +140,10 @@ public class Liste {
         }
     }
 
+    public void printKundeListe() {
+        for (Kunder kunde : kundeListe) {
+            System.out.println(kunde);
+        }
+    }
+
 }

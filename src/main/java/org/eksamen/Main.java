@@ -3,7 +3,7 @@ import java.util.Scanner;
 import org.eksamen.Hotell;
 
 public class Main {
-    Hotell hotell = new Hotell();
+    static Hotell hotell = new Hotell();
     public static void main(String[] args) {
         Scanner skanner = new Scanner(System.in);
 
@@ -71,7 +71,6 @@ public class Main {
     }
 
     public static void administrasjon(Scanner skanner) {
-        Hotell hotell = new Hotell();
         boolean fortsettISubmeny = true;
         while (fortsettISubmeny) {
             System.out.println("Administrasjon");
@@ -200,6 +199,8 @@ public class Main {
                     case 3:
                         System.out.println("Legge til kundebruker er valgt");
                         System.out.println("----------------------------------------");
+
+                        hotell.leggTilNyKunde();
                         break;
                     case 9:
                         // Gå tilbake til hovedmenyen

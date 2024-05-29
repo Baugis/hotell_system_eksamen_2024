@@ -52,6 +52,8 @@ public class Hotell {
         Kunder kunde = new Kunder(nyKundeId, navn, epost, telefon);
 
         liste.getKundeListe().add(kunde);
+
+        liste.printKundeListe();
     }
 
     // Søkealgoritme
