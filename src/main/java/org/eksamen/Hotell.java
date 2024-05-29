@@ -71,12 +71,14 @@ public class Hotell {
         Scanner skanner = new Scanner(System.in);
 
         System.out.println("Oppgi startdato (yyyy-MM-dd)");
-        LocalDateTime startDato = LocalDateTime.parse(skanner.nextLine());
+        String startDato = skanner.nextLine();
+
         System.out.println("Oppgi sluttdato(yyyy-MM-dd)");
-        LocalDateTime sluttDato = LocalDateTime.parse(skanner.nextLine());
+        String sluttDato = skanner.nextLine();
 
         System.out.println("Oppgi minimumspris:");
         double minPris = Double.parseDouble(skanner.nextLine());
+
         System.out.println("Oppgi maksimumspris:");
         double maksPris = Double.parseDouble(skanner.nextLine());
 
