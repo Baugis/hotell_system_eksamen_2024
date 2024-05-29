@@ -20,6 +20,9 @@ public class Liste {
     public ArrayList<Rom> getRomListe() {
         return romListe;
     }
+
+    public ArrayList<Kunder> getKundeListe() { return kundeListe;}
+
     // Opprette Data objekt for å
     public Liste(Database database) {
         this.database = database;
