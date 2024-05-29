@@ -6,6 +6,7 @@ import org.eksamen.Entity.Kunder;
 import org.eksamen.Entity.Utsjekkinger;
 import org.eksamen.Liste;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.time.LocalDateTime;
 import java.util.Scanner;
@@ -67,7 +68,22 @@ public class Hotell {
     // Det skal deretter printes ut de tilgjengelige rommene
 
     public void sokeRom() {
-        System.out.println("Her");
+        Scanner skanner = new Scanner(System.in);
+
+        System.out.println("Oppgi startdato (yyyy-MM-dd)");
+        LocalDateTime startDato = LocalDateTime.parse(skanner.nextLine());
+        System.out.println("Oppgi sluttdato(yyyy-MM-dd)");
+        LocalDateTime sluttDato = LocalDateTime.parse(skanner.nextLine());
+
+        System.out.println("Oppgi minimumspris:");
+        double minPris = Double.parseDouble(skanner.nextLine());
+        System.out.println("Oppgi maksimumspris:");
+        double maksPris = Double.parseDouble(skanner.nextLine());
+
+        System.out.println("Oppgi ønsket romtype:");
+        String romtype = skanner.nextLine();
+
+
     }
 
     // Reservere rom
