@@ -2,33 +2,33 @@ package org.eksamen.Entity;
 
 import java.time.LocalDateTime;
 
+// Utsjekkinger er opprettet av kandidatnummer 7041
 public class Utsjekkinger {
-
-
     private int utsjekkingid;
-
     private int reservasjonid;
-
     private String utsjekkingdato;
 
+    // Oppretter konstruktør
     public Utsjekkinger(int utsjekkingid, int reservasjonid, String utsjekkingdato){
         this.utsjekkingid = utsjekkingid;
         this.reservasjonid = reservasjonid;
         this.utsjekkingdato = utsjekkingdato;
     }
 
-    private int getUtsjekkingid(){
+    // Oppretter gettere
+    public int getUtsjekkingid(){
         return utsjekkingid;
     }
 
-    private int getReservasjonid(){
+    public int getReservasjonid(){
         return reservasjonid;
     }
 
-    private String getUtsjekkingdato(){
+    public String getUtsjekkingdato(){
         return utsjekkingdato;
     }
 
+    // Oppretter settere
     public void setUtsjekkingid(int utsjekkingid){
         this.utsjekkingid = utsjekkingid;
     }

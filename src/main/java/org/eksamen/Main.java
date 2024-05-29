@@ -1,11 +1,13 @@
 package org.eksamen;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import org.eksamen.Entity.Kunder;
-import org.eksamen.Entity.Rom;
+import org.eksamen.Entity.*;
 import org.eksamen.Hotell;
 
+// Selve menysystemet er laget av kandidatnummer 7001 og 7041
+// Menysystemet er testet og godkjent av kandidatnummer 7017 og 7035
 public class Main {
     static Hotell hotell = new Hotell();
     public static void main(String[] args) {
@@ -45,14 +47,37 @@ public class Main {
                         skanner.close();
 
                         // Sender til database
+                        // Sendingen til database er laget av kandidatnummer 7035
+                        // Sendingen til database er testet og godkjent av kandidatnummer 7017
                         // ROM
                         ArrayList<Rom> romListe = hotell.getListe().getRomListe();
-                        String romQuery = "";
-                        // hotell.getListe().getDatabase().sendData(romQuery, romListe);
+                        String romQuery = "INSERT INTO tblrom (romid, romnummer, romtype, pris) VALUES (?, ?, ?, ?)";
+                        hotell.getListe().getDatabase().sendData(romQuery, romListe);
 
+                        // KUNDER
                         ArrayList<Kunder> kundeListe = hotell.getListe().getKundeListe();
                         String kundeQuery = "INSERT INTO tblkunde (kundeid, navn, epost, telefon) VALUES (?, ?, ?, ?)";
                         hotell.getListe().getDatabase().sendData(kundeQuery, kundeListe);
+
+                        // Avbestillinger
+                        ArrayList<Avbestillinger> avbestillingsListe = hotell.getListe().getAvbestillingerListe();
+                        String avbestillingsQuery = "INSERT INTO tblavbestilling (avbestillingid, reservasjonid, avbestillingdato) VALUES (?, ?, ?)";
+                        hotell.getListe().getDatabase().sendData(avbestillingsQuery, avbestillingsListe);
+
+                        // Innsjekkinger
+                        ArrayList<Innsjekkinger> innsjekkingListe = hotell.getListe().getInnsjekkingerListe();
+                        String innsjekkingQuery = "INSERT INTO tblinnsjekking (innsjekkingid, reservasjonid, innsjekkingdato) VALUES (?, ?, ?)";
+                        hotell.getListe().getDatabase().sendData(innsjekkingQuery, innsjekkingListe);
+
+                        // Reservasjoner
+                        ArrayList<Reservasjoner> reservasjonListe = hotell.getListe().getReservasjonerListe();
+                        String reservasjonQuery = "INSERT INTO tblreservasjon (reservasjonid, kundeid, startdato, sluttdato, status) VALUES (?, ?, ?, ?, ?)";
+                        hotell.getListe().getDatabase().sendData(reservasjonQuery, reservasjonListe);
+
+                        // Utsjekkinger
+                        ArrayList<Utsjekkinger> utsjekkingListe = hotell.getListe().getUtsjekkingListe();
+                        String utsjekkingQuery = "INSERT INTO tblutsjekking (utsjekkingid, reservasjonid, utsjekkingdato) VALUES (?, ?, ?)";
+                        hotell.getListe().getDatabase().sendData(utsjekkingQuery, utsjekkingListe);
 
                         System.exit(0);
                         break;
